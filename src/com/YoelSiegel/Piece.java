@@ -1,24 +1,22 @@
 package com.YoelSiegel;
 
 public class Piece {
-    protected boolean pieceColor;
-    int x;
-    int y;
-    protected boolean isalive;
+    private int x;
+    private int y;
+    private PieceColor piececolor;
 
-    public Piece(boolean pieceColor, int x, int y) {
-        this.pieceColor = pieceColor;
+    public Piece(PieceColor pieceColor, int x, int y) {
+        this.piececolor = pieceColor;
         this.x = x;
         this.y = y;
-        isalive=true;
     }
 
-    public boolean isPieceColor() {
-        return pieceColor;
+    public PieceColor getPieceColor() {
+        return piececolor;
     }
 
-    public void setPieceColor(boolean pieceColor) {
-        this.pieceColor = pieceColor;
+    public void setPieceColor(PieceColor pieceColor) {
+        this.piececolor = pieceColor;
     }
 
     public void movePiece(Board temp){
@@ -41,6 +39,9 @@ public class Piece {
     }
 
     public void whatPiece(){
+
+    }
+    public void attackPiece(Board temp){
 
     }
 }

@@ -12,7 +12,7 @@ public class Castle extends Piece {
         this.type = type;
     }
 
-    public Castle(boolean pieceColor, int x, int y) {
+    public Castle(PieceColor pieceColor, int x, int y) {
         super(pieceColor, x, y);
     }
     public void whatPiece(){

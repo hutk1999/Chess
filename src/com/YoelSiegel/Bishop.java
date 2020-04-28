@@ -3,8 +3,8 @@ package com.YoelSiegel;
 public class Bishop extends Piece {
     private String type ="Bishop";
 
-    public Bishop(boolean pieceColor, int x, int y) {
-        super(pieceColor, x, y);
+    public Bishop(PieceColor ecolor, int x, int y) {
+        super(ecolor, x, y);
     }
 
     public String getType() {

@@ -16,9 +16,9 @@ public class Board {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (((i+j)%2)==0) {
-                    chessboard[i][j]=new Tiles(true);
+                    chessboard[i][j]=new Tiles(PieceColor.WHITE);
                 } else{
-                    chessboard[i][j]=new Tiles(false);
+                    chessboard[i][j]=new Tiles(PieceColor.BLACK);
                 }
             }
         }
@@ -27,9 +27,10 @@ public class Board {
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if(chessboard[i][j].isPieceOn()==true)
+                if(chessboard[i][j].isPieceOn()) {
                     chessboard[i][j].getPiece().whatPiece();
-                System.out.print(chessboard[i][j].isPieceOn()+"   ");
+                }
+                System.out.print(chessboard[i][j].getTileColor()+"   ");
 
             }
             System.out.println();

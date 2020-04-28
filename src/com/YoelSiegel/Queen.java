@@ -12,7 +12,7 @@ public class Queen extends Piece{
         this.type = type;
     }
 
-    public Queen(boolean pieceColor, int x, int y) {
+    public Queen(PieceColor pieceColor, int x, int y) {
         super(pieceColor, x, y);
     }
     public void whatPiece(){

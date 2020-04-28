@@ -16,7 +16,7 @@ public class Tiles {
         return piece;
     }
     private Piece piece;
-    private boolean tileColor;
+    private PieceColor tileColor;
 
     public void setPiece(Piece piece) {
         this.piece = piece;
@@ -26,29 +26,27 @@ public class Tiles {
             setPieceOn(true);
     }
 
-    public boolean isTileColor() {
+    public PieceColor getTileColor() {
         return tileColor;
     }
 
-    public void setTileColor(boolean tileColor) {
+    public void setTileColor(PieceColor tileColor) {
 
-        if (tileColor) {
-            this.tileColor = true;
-            System.out.println("white");
+        if (tileColor==PieceColor.WHITE) {
+            this.tileColor = PieceColor.WHITE;
         }
         else {
-            this.tileColor = false;
-            System.out.println("black");
+            this.tileColor = PieceColor.BLACK;
         }
     }
 
-    public Tiles(boolean tileColor){
+    public Tiles(PieceColor tileColor){
         this.isPieceOn = false;
         this.piece = null;
         this.tileColor = tileColor;
     }
 
-    public Tiles(boolean isPieceOn, Piece piece, boolean tileColor) {
+    public Tiles(boolean isPieceOn, Piece piece, PieceColor tileColor) {
         this.isPieceOn = isPieceOn;
         this.piece = piece;
         this.tileColor = tileColor;

@@ -4,7 +4,7 @@ public class Pawn extends Piece {
 
     private String type ="Pawn";
 
-    public Pawn(boolean pieceColor, int x, int y) {
+    public Pawn(PieceColor pieceColor, int x, int y) {
         super(pieceColor, x, y);
     }
 
@@ -17,40 +17,30 @@ public class Pawn extends Piece {
         this.type = type;
     }
     public void movePiece(Board temp){
-        System.out.println(getX() + "" + getY());
         if(!temp.getChessboard()[getX() + 1][getY()].isPieceOn()){
             System.out.println("can move legally");
             temp.getChessboard()[getX()+1][getY()]= temp.getChessboard()[getX()][getY()];
-            temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].isTileColor());
+            temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
             temp.getChessboard()[getX()+1][getY()].setPieceOn(true);
             setX(getX()+1);
         }
-        else
+        else {
             System.out.println("this move is illegal");
-
-            }
-        public void attackpiece(Board temp){
-        System.out.println(getX()+" "+getY());
-        if ((temp.getChessboard()[getX()+1][getY()+1].isPieceOn())&&(temp.getChessboard()[getX()+1][getY()+1].getPiece().pieceColor!=pieceColor)){
-            System.out.println("you can eat away");
-            temp.getChessboard()[getX()+1][getY()+1].getPiece().x=100;
-            temp.getChessboard()[getX()+1][getY()+1].getPiece().y=100;
-            temp.getChessboard()[getX()+1][getY()+1].setPiece(null);
-            temp.getChessboard()[getX()+1][getY()+1]= temp.getChessboard()[getX()][getY()];
-            temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].isTileColor());
+        }
+    }
+        public void attackPiece(Board temp){
+        if ((temp.getChessboard()[getX()+1][getY()+1].isPieceOn())&&(temp.getChessboard()[getX()+1][getY()+1].getPiece().getPieceColor()!=getPieceColor())){
+            temp.getChessboard()[getX()+1][getY()+1].setPiece(this);
+            temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
             temp.getChessboard()[getX()+1][getY()+1].setPieceOn(true);
             setX(getX()+1);
             setY(getY()+1);
         }
-        else if ((temp.getChessboard()[getX()+1][getY()-1].isPieceOn())&&(temp.getChessboard()[getX()+1][getY()-1].getPiece().pieceColor!=pieceColor)) {
-            System.out.println("you can eat away");
-            temp.getChessboard()[getX() + 1][getY() - 1].getPiece().x = 100;
-            temp.getChessboard()[getX() + 1][getY() - 1].getPiece().y = 100;
-            temp.getChessboard()[getX() + 1][getY() - 1].getPiece().isalive = false;
-            temp.getChessboard()[getX() + 1][getY() - 1] = temp.getChessboard()[getX()][getY()];
-            temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].isTileColor());
+        else if ((temp.getChessboard()[getX()+1][getY()-1].isPieceOn())&&(temp.getChessboard()[getX()+1][getY()-1].getPiece().getPieceColor()!=getPieceColor())) {
+            temp.getChessboard()[getX() + 1][getY() - 1].setPiece(this);
+            temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
             temp.getChessboard()[getX() + 1][getY() - 1].setPieceOn(true);
-            setX(getX() - 1);
+            setX(getX() + 1);
             setY(getY() - 1);
         }
         else
@@ -58,14 +48,14 @@ public class Pawn extends Piece {
 
         }
     public void whatPiece(){
-        System.out.print("pawn");
+        System.out.print("pawn" + getPieceColor());
     }
 
     public void printPeice(){
         System.out.println("X="+getX());
         System.out.println("y="+getY());
         System.out.println("The piece is a "+getType());
-        System.out.println("The piece color is "+isPieceColor());
+        System.out.println("The piece color is "+ getPieceColor());
     }
 
 

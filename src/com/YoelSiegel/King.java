@@ -11,8 +11,8 @@ public class King extends Piece {
         this.type = type;
     }
 
-    public King(boolean pieceColor, int x, int y) {
-        super(pieceColor, x, y);
+    public King(PieceColor ecolor, int x, int y) {
+        super(ecolor, x, y);
     }
     public void whatPiece(){
         System.out.print("king");

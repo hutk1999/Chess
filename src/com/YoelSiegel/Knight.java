@@ -12,8 +12,8 @@ public class Knight extends Piece {
         this.type = type;
     }
 
-    public Knight(boolean pieceColor, int x, int y) {
-        super(pieceColor, x, y);
+    public Knight(PieceColor ecolor, int x, int y) {
+        super(ecolor, x, y);
     }
     public void whatPiece(){
         System.out.print("knight");
