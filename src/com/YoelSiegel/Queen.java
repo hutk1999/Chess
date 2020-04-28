@@ -15,7 +15,8 @@ public class Queen extends Piece{
     public Queen(PieceColor pieceColor, int x, int y) {
         super(pieceColor, x, y);
     }
-    public void whatPiece(){
-        System.out.print("queen");
+    public void whatPiece() {
+        System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
+        System.out.print("q ");
     }
 }

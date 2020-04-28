@@ -30,7 +30,8 @@ public class Board {
                 if(chessboard[i][j].isPieceOn()) {
                     chessboard[i][j].getPiece().whatPiece();
                 }
-                System.out.print(chessboard[i][j].getTileColor()+"   ");
+                else
+                    System.out.print("#  ");
 
             }
             System.out.println();

@@ -41,7 +41,7 @@ public class Piece {
     public void whatPiece(){
 
     }
-    public void attackPiece(Board temp){
+    public void attackPiece(Board temp,int x,int y){
 
     }
 }

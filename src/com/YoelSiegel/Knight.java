@@ -16,6 +16,7 @@ public class Knight extends Piece {
         super(ecolor, x, y);
     }
     public void whatPiece(){
-        System.out.print("knight");
+        System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
+        System.out.print("h ");
     }
 }

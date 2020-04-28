@@ -20,12 +20,11 @@ public class Bishop extends Piece {
     }
 
     public void whatPiece(){
-        System.out.print("bishop");
+        System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
+        System.out.print("b ");
     }
 
-    public void movePiece(Board temp, int x, int y) {
-
-    }
+    public void movePiece(Board temp, int x, int y) {    }
 
 
 

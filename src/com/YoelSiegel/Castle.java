@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class Castle extends Piece {
 boolean ismovelegal=true;
-boolean isthisattack=false;
     private String type="Castle";
 
     public String getType() {
@@ -27,6 +26,10 @@ boolean isthisattack=false;
             ismovelegal=false;
             return;
         }
+        else if ((temp.getChessboard()[x][y].isPieceOn()==true))
+        {
+            System.out.println("this move is illegal there is a piece is there");
+        }
         //if they are on the same x and the y is higher
         else if((x==this.getX())&&(y>this.getY())){
                 for(int i=this.getY();i<y;i++) {
@@ -44,18 +47,7 @@ boolean isthisattack=false;
                             setX(x);
                             setY(y);
                         }
-                        else{
-                            if(temp.getChessboard()[x][y].getPiece().getPieceColor()==getPieceColor()){
-                                ismovelegal=false;
-                                System.out.print("this move is illegal");
-                                return;
-                            }
-                            else {
-                                ismovelegal = true;
-                                isthisattack=true;
-                                attackPiece(temp, x, y);
-                            }
-            }
+
 
         }
         //if they are on the same x tzir and the y is smaller
@@ -75,17 +67,8 @@ boolean isthisattack=false;
                 setX(x);
                 setY(y);
             }
-            else {
-                if (temp.getChessboard()[x][y].getPiece().getPieceColor() == getPieceColor()) {
-                    ismovelegal = false;
-                    System.out.print("this move is illegal");
-                    return;
-                } else {
-                    ismovelegal = true;
-                    isthisattack = true;
-                    attackPiece(temp, x, y);
-                }
-            }
+
+
             }
             //if on the same y tzir and x is higher then ours
              else if((y==this.getY())&&(x>this.getX())){
@@ -104,18 +87,7 @@ boolean isthisattack=false;
                     setX(x);
                     setY(y);
                 }
-                else{
-                    if(temp.getChessboard()[x][y].getPiece().getPieceColor()==getPieceColor()){
-                        ismovelegal=false;
-                        System.out.print("this move is illegal");
-                        return;
-                    }
-                    else {
-                        ismovelegal = true;
-                        isthisattack=true;
-                        attackPiece(temp, x, y);
-                    }
-                }
+
 
             }
             //if they are on the same y tzir and the x is smaller then ours
@@ -135,29 +107,14 @@ boolean isthisattack=false;
                     setX(x);
                     setY(y);
                 }
-                else{
-                    if(temp.getChessboard()[x][y].getPiece().getPieceColor()==getPieceColor()){
-                        ismovelegal=false;
-                        System.out.print("this move is illegal");
-                        return;
-                    }
-                    else {
-                        ismovelegal = true;
-                        isthisattack=true;
-                        attackPiece(temp, x, y);
-                    }
-                }
-
             }
     }
 
 
     @Override
     public void attackPiece(Board temp, int x, int y) {
-        if (isthisattack==false) {
-            System.out.print("this is a illegal move");
-            return;
-        }
+        System.out.print("in the attck of castle");
+
         super.attackPiece(temp, x, y);
         temp.getChessboard()[x][y].setPiece(this);
         temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
@@ -170,7 +127,8 @@ boolean isthisattack=false;
         super(pieceColor, x, y);
     }
     public void whatPiece(){
-        System.out.print("castle");
+        System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
+        System.out.print("c ");
     }
 }
 
