@@ -19,7 +19,7 @@ public class Piece {
         this.piececolor = pieceColor;
     }
 
-    public void movePiece(Board temp){
+    public void movePiece(Board temp, int x, int y){
     }
 
     public int getX() {
@@ -41,7 +41,7 @@ public class Piece {
     public void whatPiece(){
 
     }
-    public void attackPiece(Board temp){
+    public void attackPiece(Board temp, int x, int y){
 
     }
 }

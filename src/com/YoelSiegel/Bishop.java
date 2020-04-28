@@ -22,4 +22,16 @@ public class Bishop extends Piece {
     public void whatPiece(){
         System.out.print("bishop");
     }
+
+    public void movePiece(Board temp, int x, int y) {
+
+    }
+
+
+
+
+
+
+
+
 }
