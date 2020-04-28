@@ -36,7 +36,7 @@ public class Board {
             System.out.println();
         }
     }
-    public void makeBoard(Board temp){
+    public void makeBoard(){
         assignColors();
         Pawn bptemp0=new Pawn(PieceColor.BLACK, 1,0);
         getChessboard()[1][0].setPiece(bptemp0);

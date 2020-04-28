@@ -13,7 +13,7 @@ public class Main {
         int num2 = scanNum.nextInt();
 
         Board myChess=new Board();
-        myChess.makeBoard(myChess);
+        myChess.makeBoard();
 
         //myChess.getChessboard()[1][1].getPiece().attackPiece(myChess);
 
