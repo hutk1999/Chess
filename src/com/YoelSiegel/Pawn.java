@@ -52,28 +52,42 @@ public class Pawn extends Piece {
     }
     public void movePiece(Board temp, int x, int y)
     {
-        if(getY()==getOriginalPlacement())
+        if(getX()==getOriginalPlacement())
         {
             if (!temp.getChessboard()[getX() + getZ()][getY()].isPieceOn())
             {
                 int doubleJump=1;
-                if(y==(getOriginalPlacement() + getZ()*2) && !temp.getChessboard()[getX() + getZ()*2][getY()].isPieceOn()){
+                if((x==(getOriginalPlacement() + getZ()*2)) && !temp.getChessboard()[getX() + getZ()*2][getY()].isPieceOn()){
                     doubleJump=2;
+                    temp.getChessboard()[getX() + (getZ()*2)][getY()] = temp.getChessboard()[getX()][getY()];
+                    temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+                    temp.getChessboard()[getX() + (getZ()*2)][getY()].setPieceOn(true);
+                    setX(getX() + (getZ()*2));
                 }
-                else{
+                else if((x==(getOriginalPlacement() + getZ())) && !temp.getChessboard()[getX() + getZ()][getY()].isPieceOn()) {
+                    temp.getChessboard()[getX() + (getZ())][getY()] = temp.getChessboard()[getX()][getY()];
+                    temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+                    temp.getChessboard()[getX() + (getZ())][getY()].setPieceOn(true);
+                    setX(getX() + (getZ()));
+                }
+                else {
                     System.out.println("illegal move");
                     return;
                 }
-
-                System.out.println("can move legally");
-                temp.getChessboard()[getX() + (getZ()*doubleJump)][getY()] = temp.getChessboard()[getX()][getY()];
-                temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
-                temp.getChessboard()[getX() + (getZ()*doubleJump)][getY()].setPieceOn(true);
-                setX(getX() + (getZ()*doubleJump));
             }
+
         }
         else {
-            System.out.println("this move is illegal");
+            if(!temp.getChessboard()[getX() + getZ()][getY()].isPieceOn()){
+                temp.getChessboard()[getX() + (getZ())][getY()] = temp.getChessboard()[getX()][getY()];
+                temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+                temp.getChessboard()[getX() + (getZ())][getY()].setPieceOn(true);
+                setX(getX() + (getZ()));
+            }
+            else{
+                System.out.println("illegal move");
+                return;
+            }
         }
     }
     public void attackPiece(Board temp, int x, int y){
