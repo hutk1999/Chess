@@ -3,50 +3,65 @@ package com.YoelSiegel;
 
 public class Tiles {
     private boolean isPieceOn;
+    private Piece piece;
+    private PieceColor tileColor;
+    boolean attackedfromwhite=false;
+    boolean attatckedfromblack=false;
 
-    public boolean isPieceOn() {
+    public boolean isPieceOn()
+    {
         return isPieceOn;
     }
 
-    public void setPieceOn(boolean pieceOn) {
+    public void setPieceOn(boolean pieceOn)
+    {
         this.isPieceOn=pieceOn;
     }
 
-    public Piece getPiece() {
+    public Piece getPiece()
+    {
         return piece;
     }
-    private Piece piece;
-    private PieceColor tileColor;
 
-    public void setPiece(Piece piece) {
+
+    public void setPiece(Piece piece)
+    {
         this.piece = piece;
-        if (piece==null)
+        if (piece==null) {
             setPieceOn(false);
-        else
+        }
+            else
+        {
             setPieceOn(true);
+        }
     }
 
-    public PieceColor getTileColor() {
+    public PieceColor getTileColor()
+    {
         return tileColor;
     }
 
     public void setTileColor(PieceColor tileColor) {
 
-        if (tileColor==PieceColor.WHITE) {
+        if (tileColor==PieceColor.WHITE)
+        {
             this.tileColor = PieceColor.WHITE;
         }
-        else {
+        else
+            {
             this.tileColor = PieceColor.BLACK;
         }
     }
 
-    public Tiles(PieceColor tileColor){
+    public Tiles(PieceColor tileColor)
+    {
         this.isPieceOn = false;
         this.piece = null;
         this.tileColor = tileColor;
     }
 
-    public Tiles(boolean isPieceOn, Piece piece, PieceColor tileColor) {
+    public Tiles(boolean isPieceOn, Piece piece, PieceColor tileColor)
+    {
         this.isPieceOn = isPieceOn;
         this.piece = piece;
         this.tileColor = tileColor;

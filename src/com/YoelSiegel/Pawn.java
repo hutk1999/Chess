@@ -5,9 +5,11 @@ public class Pawn extends Piece {
     private String type ="Pawn";
     private int z=0;
     private int originalPlacement=0;
-    public Pawn(PieceColor pieceColor, int x, int y) {
+    public Pawn(PieceColor pieceColor, int x, int y)
+    {
         super(pieceColor, x, y);
-        if(pieceColor==PieceColor.WHITE){
+        if(pieceColor==PieceColor.WHITE)
+        {
             setZ(-1);
             setOriginalPlacement(6);
         }
@@ -18,32 +20,42 @@ public class Pawn extends Piece {
     }
 
 
-    public int getZ() {
+    public int getZ()
+    {
         return z;
     }
 
-    public int getOriginalPlacement() {
-        return originalPlacement;
-    }
-
-    public void setOriginalPlacement(int originalPlacement) {
-        this.originalPlacement = originalPlacement;
-    }
-
-    public void setZ(int z) {
+    public void setZ(int z)
+    {
         this.z = z;
     }
 
-    public String getType() {
+    public int getOriginalPlacement()
+    {
+        return originalPlacement;
+    }
+
+    public void setOriginalPlacement(int originalPlacement)
+    {
+        this.originalPlacement = originalPlacement;
+    }
+
+
+    public String getType()
+    {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(String type)
+    {
         this.type = type;
     }
-    public void movePiece(Board temp, int x, int y){
-        if(getY()==getOriginalPlacement()) {
-            if (!temp.getChessboard()[getX() + getZ()][getY()].isPieceOn()) {
+    public void movePiece(Board temp, int x, int y)
+    {
+        if(getY()==getOriginalPlacement())
+        {
+            if (!temp.getChessboard()[getX() + getZ()][getY()].isPieceOn())
+            {
                 int doubleJump=1;
                 if(y==(getOriginalPlacement() + getZ()*2) && !temp.getChessboard()[getX() + getZ()*2][getY()].isPieceOn()){
                     doubleJump=2;
@@ -88,16 +100,12 @@ public class Pawn extends Piece {
 
     }
 
-    public void whatPiece(){
+    public void printPiece()
+    {
         System.out.print(this.getPieceColor()==PieceColor.WHITE?"w": "b");
         System.out.print("p ");
     }
-    public void printPeice(){
-        System.out.println("X="+getX());
-        System.out.println("y="+getY());
-        System.out.println("The piece is a "+getType());
-        System.out.println("The piece color is "+ getPieceColor());
-    }
+
 
 
 }

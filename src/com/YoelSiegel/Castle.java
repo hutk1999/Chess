@@ -122,11 +122,151 @@ boolean ismovelegal=true;
         setX(x);
         setY(y);
     }
+    //checks all the places this guy is threatning
+    public void alllegalmoves(Board temp)
+    {
+        //checks all the places on the same y axis going up for white
+        if (this.getPieceColor() == PieceColor.WHITE)
+        {
+            int i = getX();
+            while ((temp.getChessboard()[i][getY()].isPieceOn() != true) && (i < 8))
+            {
+                i = i + 1;
+                if (temp.getChessboard()[i][getY()].isPieceOn() == false)
+                {
+                    temp.getChessboard()[i][getY()].attackedfromwhite = true;
+                }
+                else
+                    {
+                    if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.BLACK)
+                    {
+                        temp.getChessboard()[i][getY()].attackedfromwhite = true;
+                    }
+                }
+            }
+            //checks all the places on the y axis going down
+            while ((temp.getChessboard()[i][getY()].isPieceOn() != true) && (i > -1))
+            {
+                i = i - 1;
+                if (temp.getChessboard()[i][getY()].isPieceOn() == false)
+                {
+                    temp.getChessboard()[i][getY()].attackedfromwhite = true;
+                }
+                else
+                    {
+                    if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.BLACK)
+                    {
+                        temp.getChessboard()[i][getY()].attackedfromwhite = true;
+                    }
+                }
+            }
+            //checks all the places on the x axis going up
+            while ((temp.getChessboard()[getX()][i].isPieceOn() != true) && (i < 8))
+            {
+                i = i + 1;
+                if (temp.getChessboard()[getX()][i].isPieceOn() == false)
+                {
+                    temp.getChessboard()[getX()][i].attackedfromwhite = true;
+                }
+                else
+                    {
+                    if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.BLACK)
+                    {
+                        temp.getChessboard()[getX()][i].attackedfromwhite = true;
+                    }
+                }
+            }
+            //checks all the pieces on the x axis going down
+            while ((temp.getChessboard()[getX()][i].isPieceOn() != true) && (i > -1))
+            {
+                i = i - 1;
+                if (temp.getChessboard()[getX()][i].isPieceOn() == false)
+                {
+                    temp.getChessboard()[getX()][i].attackedfromwhite = true;
+                }
+                else
+                    {
+                    if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.BLACK)
+                    {
+                        temp.getChessboard()[getX()][i].attackedfromwhite = true;
+                    }
+                }
+            }
+        }
+        else
+            //now if the piece is black
+            {
+                int i = getX();
+                while ((temp.getChessboard()[i][getY()].isPieceOn() != true) && (i < 8))
+                {
+                    i = i + 1;
+                    if (temp.getChessboard()[i][getY()].isPieceOn() == false)
+                    {
+                        temp.getChessboard()[i][getY()].attatckedfromblack = true;
+                    }
+                    else
+                        {
+                        if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.BLACK)
+                        {
+                            temp.getChessboard()[i][getY()].attatckedfromblack = true;
+                        }
+                    }
+                }
+                //checks all the places on the y axis going down
+                while ((temp.getChessboard()[i][getY()].isPieceOn() != true) && (i > -1))
+                {
+                    i = i -1;
+                    if (temp.getChessboard()[i][getY()].isPieceOn() == false)
+                    {
+                        temp.getChessboard()[i][getY()].attatckedfromblack = true;
+                    }
+                    else
+                        {
+                        if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.BLACK)
+                        {
+                            temp.getChessboard()[i][getY()].attatckedfromblack = true;
+                        }
+                    }
+                }
+                //checks all the places on the x axis going up
+                while ((temp.getChessboard()[getX()][i].isPieceOn() != true) && (i <8))
+                {
+                    i = i +1;
+                    if (temp.getChessboard()[getX()][i].isPieceOn() == false)
+                    {
+                        temp.getChessboard()[getX()][i].attatckedfromblack = true;
+                    }
+                    else
+                        {
+                        if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.BLACK)
+                        {
+                            temp.getChessboard()[getX()][i].attatckedfromblack = true;
+                        }
+                    }
+                }
+                //checks all the pieces on the x axis going down
+                while ((temp.getChessboard()[getX()][i].isPieceOn() != true) && (i > -1))
+                {
+                    i = i -1;
+                    if (temp.getChessboard()[getX()][i].isPieceOn() == false)
+                    {
+                        temp.getChessboard()[getX()][i].attatckedfromblack = true;
+                    }
+                    else
+                        {
+                        if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.BLACK)
+                        {
+                            temp.getChessboard()[getX()][i].attatckedfromblack = true;
+                        }
+                    }
+                }
+            }
+    }
 
     public Castle(PieceColor pieceColor, int x, int y) {
         super(pieceColor, x, y);
     }
-    public void whatPiece(){
+    public void printPiece(){
         System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
         System.out.print("c ");
     }

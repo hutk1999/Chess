@@ -1,43 +1,57 @@
 package com.YoelSiegel;
 
-
+//class of board
 public class Board {
-    public Tiles[][] getChessboard() {
+
+    public Tiles[][] getChessboard()
+    {
         return chessboard;
     }
 
-    public void setChessboard(Tiles[][] chessboard) {
+    public void setChessboard(Tiles[][] chessboard)
+    {
         this.chessboard = chessboard;
     }
 
     private Tiles[][] chessboard =new Tiles[8][8];
-
-    public void assignColors(){
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (((i+j)%2)==0) {
+//it assigns the black and white colors for the tiles
+    public void assignColors()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                if (((i+j)%2)==0)
+                {
                     chessboard[i][j]=new Tiles(PieceColor.WHITE);
-                } else{
+                }
+                else{
                     chessboard[i][j]=new Tiles(PieceColor.BLACK);
                 }
             }
         }
     }
+    //prints the board out
     public void printBoard(){
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if(chessboard[i][j].isPieceOn()) {
-                    chessboard[i][j].getPiece().whatPiece();
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                if(chessboard[i][j].isPieceOn())
+                {
+                    chessboard[i][j].getPiece().printPiece();
                 }
                 else
                     System.out.print("#  ");
 
             }
-            System.out.println();
+                    System.out.println();
         }
     }
-    public void makeBoard(){
+    //initializes the board
+    public void makeBoard()
+    {
         assignColors();
         Pawn bptemp0=new Pawn(PieceColor.BLACK, 1,0);
         getChessboard()[1][0].setPiece(bptemp0);

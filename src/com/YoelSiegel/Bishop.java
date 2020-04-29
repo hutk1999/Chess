@@ -19,7 +19,8 @@ public class Bishop extends Piece {
 
     }
 
-    public void whatPiece(){
+    public void printPiece()
+    {
         System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
         System.out.print("b ");
     }

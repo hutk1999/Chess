@@ -14,7 +14,7 @@ public class King extends Piece {
     public King(PieceColor ecolor, int x, int y) {
         super(ecolor, x, y);
     }
-    public void whatPiece(){
+    public void printPiece(){
         System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
         System.out.print("k ");
     }
