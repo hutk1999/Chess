@@ -28,6 +28,13 @@ public class Bishop extends Piece {
     public void movePiece(Board temp, int x, int y) {    }
 
 
+    public void attackPiece(Board temp, int x, int y){
+
+
+
+    }
+
+
 
 
 

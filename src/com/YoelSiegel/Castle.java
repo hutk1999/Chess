@@ -3,8 +3,16 @@ package com.YoelSiegel;
 import javax.swing.*;
 
 public class Castle extends Piece {
-boolean ismovelegal=true;
+    private boolean ismovelegal=true;
     private String type="Castle";
+
+    public boolean isIsmovelegal() {
+        return ismovelegal;
+    }
+
+    public void setIsmovelegal(boolean ismovelegal) {
+        this.ismovelegal = ismovelegal;
+    }
 
     public String getType() {
         return type;
@@ -13,53 +21,29 @@ boolean ismovelegal=true;
     public void setType(String type) {
         this.type = type;
     }
-    public void movepiece(Board temp,int x,int y){
+    public void movePiece(Board temp,int x,int y){
         //if they are not on the same tzir
         if(( x!=this.getX())&&(y!=this.getY())){
             System.out.print("this move is illegal");
-            ismovelegal=false;
+            setIsmovelegal(false);
             return;
         }
         //if this isnt moving anywhere
         else if(( x==this.getX())&&(y==this.getY())){
             System.out.print("this move is illegal");
-            ismovelegal=false;
+            setIsmovelegal(false);
             return;
-        }
-        else if ((temp.getChessboard()[x][y].isPieceOn()==true))
-        {
-            System.out.println("this move is illegal there is a piece is there");
         }
         //if they are on the same x and the y is higher
         else if((x==this.getX())&&(y>this.getY())){
-                for(int i=this.getY();i<y;i++) {
-                    if (temp.getChessboard()[x][i].isPieceOn() == true) {
+                for(int i=this.getY()+1;i<y;i++) {
+                    if (temp.getChessboard()[x][i].isPieceOn()) {
                         System.out.print("this move is illegal");
-                        ismovelegal = false;
+                        setIsmovelegal(false);
                         return;
                     }
                 }
-                        if(temp.getChessboard()[x][y].isPieceOn()==false){
-                            System.out.print("this move is legal");
-                            temp.getChessboard()[x][y]= temp.getChessboard()[getX()][getY()];
-                            temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
-                            temp.getChessboard()[x][y].setPieceOn(true);
-                            setX(x);
-                            setY(y);
-                        }
-
-
-        }
-        //if they are on the same x tzir and the y is smaller
-        else if((x==this.getX())&&(y<this.getY())){
-            for(int i=y;i<getY();i++) {
-                if (temp.getChessboard()[x][i].isPieceOn() == true) {
-                    System.out.print("this move is illegal");
-                    ismovelegal = false;
-                    return;
-                }
-            }
-            if(temp.getChessboard()[x][y].isPieceOn()==false){
+            if(!temp.getChessboard()[x][y].isPieceOn()){
                 System.out.print("this move is legal");
                 temp.getChessboard()[x][y]= temp.getChessboard()[getX()][getY()];
                 temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
@@ -67,45 +51,73 @@ boolean ismovelegal=true;
                 setX(x);
                 setY(y);
             }
-
-
+            else{
+                attackPiece(temp, x, y);
             }
+
+
+        }
+        //if they are on the same x tzir and the y is smaller
+        else if((x==this.getX())&&(y<this.getY())) {
+            for (int i = y+1; i < getY(); i++) {
+                if (temp.getChessboard()[x][i].isPieceOn()) {
+                    System.out.print("this move is illegal");
+                    setIsmovelegal(false);
+                    return;
+                }
+            }
+            if(!temp.getChessboard()[x][y].isPieceOn()){
+                System.out.print("this move is legal");
+                temp.getChessboard()[x][y]= temp.getChessboard()[getX()][getY()];
+                temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+                temp.getChessboard()[x][y].setPieceOn(true);
+                setX(x);
+                setY(y);
+            }
+            else{
+                attackPiece(temp, x, y);
+            }
+        }
             //if on the same y tzir and x is higher then ours
              else if((y==this.getY())&&(x>this.getX())){
-                for(int i=this.getX();i<x;i++) {
-                    if (temp.getChessboard()[i][y].isPieceOn() == true) {
+                for(int i=this.getX()+1;i<x;i++) {
+                    if (temp.getChessboard()[i][y].isPieceOn()) {
                         System.out.print("this move is illegal");
-                        ismovelegal = false;
+                       setIsmovelegal(false);
                         return;
                     }
                 }
-                if(temp.getChessboard()[x][y].isPieceOn()==false){
-                    System.out.print("this move is legal");
-                    temp.getChessboard()[x][y]= temp.getChessboard()[getX()][getY()];
-                    temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
-                    temp.getChessboard()[x][y].setPieceOn(true);
-                    setX(x);
-                    setY(y);
-                }
-
-
+            if(!temp.getChessboard()[x][y].isPieceOn()){
+                System.out.print("this move is legal");
+                temp.getChessboard()[x][y]= temp.getChessboard()[getX()][getY()];
+                temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+                temp.getChessboard()[x][y].setPieceOn(true);
+                setX(x);
+                setY(y);
+            }
+            else{
+                attackPiece(temp, x, y);
+            }
             }
             //if they are on the same y tzir and the x is smaller then ours
             else if((y==this.getY())&&(x<this.getX())){
-                for(int i=x;i<getX();i++) {
-                    if (temp.getChessboard()[i][y].isPieceOn() == true) {
+                for(int i=x+1;i<getX();i++) {
+                    if (temp.getChessboard()[i][y].isPieceOn()) {
                         System.out.print("this move is illegal");
-                        ismovelegal = false;
+                        setIsmovelegal(false);
                         return;
                     }
                 }
-                if(temp.getChessboard()[x][y].isPieceOn()==false){
+                if(!temp.getChessboard()[x][y].isPieceOn()){
                     System.out.print("this move is legal");
                     temp.getChessboard()[x][y]= temp.getChessboard()[getX()][getY()];
                     temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                     temp.getChessboard()[x][y].setPieceOn(true);
                     setX(x);
                     setY(y);
+                }
+                else{
+                    attackPiece(temp, x, y);
                 }
             }
     }
@@ -129,10 +141,10 @@ boolean ismovelegal=true;
         if (this.getPieceColor() == PieceColor.WHITE)
         {
             int i = getX();
-            while ((temp.getChessboard()[i][getY()].isPieceOn() != true) && (i < 8))
+            while ((!temp.getChessboard()[i][getY()].isPieceOn()) && (i < 8))
             {
                 i = i + 1;
-                if (temp.getChessboard()[i][getY()].isPieceOn() == false)
+                if (!temp.getChessboard()[i][getY()].isPieceOn())
                 {
                     temp.getChessboard()[i][getY()].attackedfromwhite = true;
                 }
@@ -145,10 +157,10 @@ boolean ismovelegal=true;
                 }
             }
             //checks all the places on the y axis going down
-            while ((temp.getChessboard()[i][getY()].isPieceOn() != true) && (i > -1))
+            while ((!temp.getChessboard()[i][getY()].isPieceOn()) && (i > -1))
             {
                 i = i - 1;
-                if (temp.getChessboard()[i][getY()].isPieceOn() == false)
+                if (!temp.getChessboard()[i][getY()].isPieceOn())
                 {
                     temp.getChessboard()[i][getY()].attackedfromwhite = true;
                 }
@@ -161,10 +173,10 @@ boolean ismovelegal=true;
                 }
             }
             //checks all the places on the x axis going up
-            while ((temp.getChessboard()[getX()][i].isPieceOn() != true) && (i < 8))
+            while ((!temp.getChessboard()[getX()][i].isPieceOn()) && (i < 8))
             {
                 i = i + 1;
-                if (temp.getChessboard()[getX()][i].isPieceOn() == false)
+                if (!temp.getChessboard()[getX()][i].isPieceOn())
                 {
                     temp.getChessboard()[getX()][i].attackedfromwhite = true;
                 }
@@ -177,10 +189,10 @@ boolean ismovelegal=true;
                 }
             }
             //checks all the pieces on the x axis going down
-            while ((temp.getChessboard()[getX()][i].isPieceOn() != true) && (i > -1))
+            while ((!temp.getChessboard()[getX()][i].isPieceOn()) && (i > -1))
             {
                 i = i - 1;
-                if (temp.getChessboard()[getX()][i].isPieceOn() == false)
+                if (!temp.getChessboard()[getX()][i].isPieceOn())
                 {
                     temp.getChessboard()[getX()][i].attackedfromwhite = true;
                 }
@@ -197,10 +209,10 @@ boolean ismovelegal=true;
             //now if the piece is black
             {
                 int i = getX();
-                while ((temp.getChessboard()[i][getY()].isPieceOn() != true) && (i < 8))
+                while ((!temp.getChessboard()[i][getY()].isPieceOn()) && (i < 8))
                 {
                     i = i + 1;
-                    if (temp.getChessboard()[i][getY()].isPieceOn() == false)
+                    if (!temp.getChessboard()[i][getY()].isPieceOn())
                     {
                         temp.getChessboard()[i][getY()].attatckedfromblack = true;
                     }
@@ -213,10 +225,10 @@ boolean ismovelegal=true;
                     }
                 }
                 //checks all the places on the y axis going down
-                while ((temp.getChessboard()[i][getY()].isPieceOn() != true) && (i > -1))
+                while ((!temp.getChessboard()[i][getY()].isPieceOn()) && (i > -1))
                 {
                     i = i -1;
-                    if (temp.getChessboard()[i][getY()].isPieceOn() == false)
+                    if (!temp.getChessboard()[i][getY()].isPieceOn())
                     {
                         temp.getChessboard()[i][getY()].attatckedfromblack = true;
                     }
@@ -229,10 +241,10 @@ boolean ismovelegal=true;
                     }
                 }
                 //checks all the places on the x axis going up
-                while ((temp.getChessboard()[getX()][i].isPieceOn() != true) && (i <8))
+                while ((!temp.getChessboard()[getX()][i].isPieceOn()) && (i <8))
                 {
                     i = i +1;
-                    if (temp.getChessboard()[getX()][i].isPieceOn() == false)
+                    if (!temp.getChessboard()[getX()][i].isPieceOn())
                     {
                         temp.getChessboard()[getX()][i].attatckedfromblack = true;
                     }
@@ -245,10 +257,10 @@ boolean ismovelegal=true;
                     }
                 }
                 //checks all the pieces on the x axis going down
-                while ((temp.getChessboard()[getX()][i].isPieceOn() != true) && (i > -1))
+                while ((!temp.getChessboard()[getX()][i].isPieceOn()) && (i > -1))
                 {
                     i = i -1;
-                    if (temp.getChessboard()[getX()][i].isPieceOn() == false)
+                    if (!temp.getChessboard()[getX()][i].isPieceOn())
                     {
                         temp.getChessboard()[getX()][i].attatckedfromblack = true;
                     }

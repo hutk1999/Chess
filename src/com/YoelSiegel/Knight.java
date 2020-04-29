@@ -68,14 +68,14 @@ public class Knight extends Piece {
 
     public void movePiece(Board temp, int x, int y) {
         isLegal= isMoveLegal(x,y);
-        if (isLegal == false)
+        if (!isLegal)
         {
             System.out.println("this move is illegal");
             return;
         }
         else
             {
-            if (temp.getChessboard()[x][y].isPieceOn() == false)
+            if (!temp.getChessboard()[x][y].isPieceOn())
             {
                 System.out.println("this move is legal");
                 temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
@@ -86,20 +86,20 @@ public class Knight extends Piece {
             }
             else
                 {
-                System.out.println("that move is illegal there is a piece there");
+                attackPiece(temp, x, y);
             }
         }
     }
 
     public void attackPiece(Board temp, int x, int y)
     {
-        if (isMoveLegal(x, y) == false)
+        if (!isMoveLegal(x, y))
         {
             return;
         }
         else
             {
-            if (temp.getChessboard()[x][y].isPieceOn() == false)
+            if (!temp.getChessboard()[x][y].isPieceOn())
             {
                 System.out.println("this move is illegal because its not a attack");
                 return;
