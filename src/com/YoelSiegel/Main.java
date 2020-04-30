@@ -14,9 +14,10 @@ public class Main {
 
         Board myChess=new Board();
        myChess.makeBoard();
-        Pawn temp1 = new Pawn(PieceColor.WHITE,2,5);
+        King temp1 = new King(PieceColor.WHITE,2,5);
         myChess.getChessboard()[2][5].setPiece(temp1);
-        myChess.getChessboard()[1][3].getPiece().attackPiece(myChess,2,5);
+        myChess.getChessboard()[2][5].getPiece().movePiece(myChess,5,6);
+
 
         myChess.printBoard();
     }
