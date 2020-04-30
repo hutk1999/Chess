@@ -4,8 +4,7 @@ public class Castle extends Piece {
 
     private boolean ismovelegal=true;
     private String type="Castle";
-
-
+    private boolean isattacklegal=false;
 
     public Castle(PieceColor pieceColor, int x, int y) {
         super(pieceColor, x, y);
@@ -37,13 +36,11 @@ public class Castle extends Piece {
         //if they are not on the same tzir
         if(( x!=this.getX())&&(y!=this.getY())){
             System.out.print("this move is illegal");
-            setIsmovelegal(false);
             return;
         }
         //if this isnt moving anywhere
         else if(( x==this.getX())&&(y==this.getY())){
             System.out.print("this move is illegal");
-            setIsmovelegal(false);
             return;
         }
         //if they are on the same x and the y is higher
@@ -51,7 +48,6 @@ public class Castle extends Piece {
                 for(int i=this.getY()+1;i<y;i++) {
                     if (temp.getChessboard()[x][i].isPieceOn()) {
                         System.out.print("this move is illegal");
-                        setIsmovelegal(false);
                         return;
                     }
                 }
@@ -64,6 +60,7 @@ public class Castle extends Piece {
                 setY(y);
             }
             else{
+                isattacklegal=true;
                 attackPiece(temp, x, y);
             }
 
@@ -74,7 +71,6 @@ public class Castle extends Piece {
             for (int i = y+1; i < getY(); i++) {
                 if (temp.getChessboard()[x][i].isPieceOn()) {
                     System.out.print("this move is illegal");
-                    setIsmovelegal(false);
                     return;
                 }
             }
@@ -87,6 +83,7 @@ public class Castle extends Piece {
                 setY(y);
             }
             else{
+                isattacklegal=true;
                 attackPiece(temp, x, y);
             }
         }
@@ -95,7 +92,6 @@ public class Castle extends Piece {
                 for(int i=this.getX()+1;i<x;i++) {
                     if (temp.getChessboard()[i][y].isPieceOn()) {
                         System.out.print("this move is illegal");
-                       setIsmovelegal(false);
                         return;
                     }
                 }
@@ -108,6 +104,7 @@ public class Castle extends Piece {
                 setY(y);
             }
             else{
+                isattacklegal=true;
                 attackPiece(temp, x, y);
             }
             }
@@ -116,7 +113,6 @@ public class Castle extends Piece {
                 for(int i=x+1;i<getX();i++) {
                     if (temp.getChessboard()[i][y].isPieceOn()) {
                         System.out.print("this move is illegal");
-                        setIsmovelegal(false);
                         return;
                     }
                 }
@@ -129,6 +125,7 @@ public class Castle extends Piece {
                     setY(y);
                 }
                 else{
+                    isattacklegal=true;
                     attackPiece(temp, x, y);
                 }
             }
@@ -136,6 +133,9 @@ public class Castle extends Piece {
 
     @Override
     public void attackPiece(Board temp, int x, int y) {
+        if(isattacklegal==false){
+            System.out.println("this funtction is unaccesable from anywhere");
+        }
         if (temp.getChessboard()[x][y].getPiece().getPieceColor() == this.getPieceColor()) {
             System.out.println("this move is illegal you are attacking your own piece");
         } else {
@@ -147,6 +147,7 @@ public class Castle extends Piece {
             temp.getChessboard()[x][y].setPieceOn(true);
             setX(x);
             setY(y);
+            isattacklegal=false;
         }
     }
 

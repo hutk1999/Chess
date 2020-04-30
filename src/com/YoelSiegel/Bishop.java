@@ -1,5 +1,6 @@
 package com.YoelSiegel;
 import java.lang.*;
+import java.lang.Math;
 
 public class Bishop extends Piece {
 
@@ -35,8 +36,15 @@ public class Bishop extends Piece {
         {
         System.out.println("this move is legal your not moving anywhere");
         }
-
-        else { //if xis smaller then target and y is also smaller
+        //they arent on the same axis
+       else if ((Math.abs(getX()-x))!=(Math.abs(getY()-y)))
+        {
+            System.out.println("this move is illegal");
+            return;
+        }
+        else
+        {
+            //if xis smaller then target and y is also smaller
             if ((getX() < x) && (getY() < y)) {
                 int k = 1;
                 for (int i = getX() + 1; i < x - 1; i++) {
@@ -56,9 +64,9 @@ public class Bishop extends Piece {
                     isattacklegal = true;
                     attackPiece(temp, x, y);
                 }
-            } else if
-                //x is bigger and y is bigger than target
-            ((getX() > x) && (getY() > y)) {
+            }
+            //x is bigger and y is bigger than target
+            else if ((getX() > x) && (getY() > y)) {
                 int k = 1;
                 for (int i = x; i < getX() - 1; i++) {
                     if (temp.getChessboard()[getX() - k][getY() - k].isPieceOn()) {
@@ -119,8 +127,6 @@ public class Bishop extends Piece {
                     isattacklegal = true;
                     attackPiece(temp, x, y);
                 }
-            } else {
-                System.out.println("this move is illegal");
             }
         }
         }

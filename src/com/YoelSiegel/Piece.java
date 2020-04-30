@@ -4,7 +4,7 @@ public class Piece {
     private int x;
     private int y;
     private PieceColor piececolor;
-
+    private boolean isattacklegal;//this is here so no one can access attack not from move
 
     public Piece(PieceColor pieceColor, int x, int y) {
         this.piececolor = pieceColor;
