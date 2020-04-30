@@ -35,14 +35,8 @@ public class Bishop extends Piece {
         {
         System.out.println("this move is legal your not moving anywhere");
         }
-        //they arent on the same axis
-        else if (getX() - x != getY() - y)
-        {
-            System.out.println("this move is illegal");
-            return;
-        }
-        else
-            { //if xis smaller then target and y is also smaller
+
+        else { //if xis smaller then target and y is also smaller
             if ((getX() < x) && (getY() < y)) {
                 int k = 1;
                 for (int i = getX() + 1; i < x - 1; i++) {
@@ -52,102 +46,83 @@ public class Bishop extends Piece {
                     }
                     k++;
                 }
-                if (temp.getChessboard()[x][y].isPieceOn() == false)
-                {
+                if (temp.getChessboard()[x][y].isPieceOn() == false) {
                     temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                     temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                     temp.getChessboard()[x][y].setPieceOn(true);
                     setX(x);
                     setY(y);
+                } else {
+                    isattacklegal = true;
+                    attackPiece(temp, x, y);
                 }
-                else
-                    {
-                        isattacklegal=true;
+            } else if
+                //x is bigger and y is bigger than target
+            ((getX() > x) && (getY() > y)) {
+                int k = 1;
+                for (int i = x; i < getX() - 1; i++) {
+                    if (temp.getChessboard()[getX() - k][getY() - k].isPieceOn()) {
+                        System.out.println("this move is illegal");
+                        return;
+                    }
+                    k++;
+                }
+                if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                    temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
+                    temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+                    temp.getChessboard()[x][y].setPieceOn(true);
+                    setX(x);
+                    setY(y);
+                } else {
+                    isattacklegal = true;
                     attackPiece(temp, x, y);
                 }
             }
-            else if
-                //x is bigger and y is bigger than target
-            ((getX() > x) && (getY() > y))
-            {
-                int k = 1;
-                for (int i = x; i < getX()-1; i++)
-                {
-                    if (temp.getChessboard()[getX() - k][getY() - k].isPieceOn())
-                    {
-                        System.out.println("this move is illegal");
-                        return;
-                    }
-                    k++;
-                }
-                if(temp.getChessboard()[x][y].isPieceOn()==false)
-                {
-                temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
-                temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
-                temp.getChessboard()[x][y].setPieceOn(true);
-                setX(x);
-                setY(y);
-            }
-                else
-                    {
-                        isattacklegal=true;
-                    attackPiece(temp,x,y);
-                }}
             //x is bigger and y is smaller
-            else if ((getX() > x) && (getY() < y))
-            {
+            else if ((getX() > x) && (getY() < y)) {
                 int k = 1;
-                for (int i = x + 1; i < getX()-1; i++)
-                {
-                    if (temp.getChessboard()[getX() - k][getY() + i].isPieceOn())
-                    {
+                for (int i = x + 1; i < getX() - 1; i++) {
+                    if (temp.getChessboard()[getX() - k][getY() + i].isPieceOn()) {
                         System.out.println("this move is illegal");
                         return;
                     }
                     k++;
                 }
-                if(temp.getChessboard()[x][y].isPieceOn()==false)
-                {
-                temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
-                temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
-                temp.getChessboard()[x][y].setPieceOn(true);
-                setX(x);
-                setY(y);
-            }
-                else
-                    {
-                        isattacklegal=true;
-                    attackPiece(temp,x,y);
-                }}
-
-         else if((getX()>x)&&(getY()<y))
+                if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                    temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
+                    temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+                    temp.getChessboard()[x][y].setPieceOn(true);
+                    setX(x);
+                    setY(y);
+                } else {
+                    isattacklegal = true;
+                    attackPiece(temp, x, y);
+                }
+            } else if ((getX() > x) && (getY() < y))
             //out x is bigger then the location
             {
-                for (int i = x+1; i < getX()-1; i++)
-                {
-                    int k=1;
-                    if (temp.getChessboard()[getX() -k][getY() + k].isPieceOn())
-                    {
+                for (int i = x + 1; i < getX() - 1; i++) {
+                    int k = 1;
+                    if (temp.getChessboard()[getX() - k][getY() + k].isPieceOn()) {
                         System.out.println("this move is illegal");
                         return;
                     }
                     k++;
                 }
-                if(temp.getChessboard()[x][y].isPieceOn()==false)
-                {
-                temp.getChessboard()[x][y]= temp.getChessboard()[getX()][getY()];
-                temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
-                temp.getChessboard()[x][y].setPieceOn(true);
-                setX(x);
-                setY(y);
-            }
-                else
-                    {
-                        isattacklegal=true;
-                    attackPiece(temp,x,y);
+                if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                    temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
+                    temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+                    temp.getChessboard()[x][y].setPieceOn(true);
+                    setX(x);
+                    setY(y);
+                } else {
+                    isattacklegal = true;
+                    attackPiece(temp, x, y);
                 }
+            } else {
+                System.out.println("this move is illegal");
             }
-            }
+        }
         }
 
     public void attackPiece(Board temp, int x, int y){

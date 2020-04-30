@@ -17,13 +17,14 @@ public class Queen extends Piece {
     }
 
     public void printPiece() {
-        System.out.print(this.getPieceColor() == PieceColor.WHITE ? "w" : "b");
+                System.out.print(this.getPieceColor() == PieceColor.WHITE ? "w" : "b");
         System.out.print("q ");
     }
 
 
     //all important functions are here and lower
     //needa work on this
+
     public void movePiece(Board temp, int x, int y) {
         if ((x == getX()) || (y == getY())) {
             //castles code for move
