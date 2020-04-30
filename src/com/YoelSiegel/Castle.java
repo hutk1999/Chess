@@ -36,12 +36,10 @@ public class Castle extends Piece {
         //if they are not on the same tzir
         if(( x!=this.getX())&&(y!=this.getY())){
             System.out.print("this move is illegal");
-            return;
         }
         //if this isnt moving anywhere
         else if(( x==this.getX())&&(y==this.getY())){
             System.out.print("this move is illegal");
-            return;
         }
         //if they are on the same x and the y is higher
         else if((x==this.getX())&&(y>this.getY())){
@@ -133,7 +131,7 @@ public class Castle extends Piece {
 
     @Override
     public void attackPiece(Board temp, int x, int y) {
-        if(isattacklegal==false){
+        if(!isattacklegal){
             System.out.println("this funtction is unaccesable from anywhere");
         }
         if (temp.getChessboard()[x][y].getPiece().getPieceColor() == this.getPieceColor()) {

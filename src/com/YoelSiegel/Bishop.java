@@ -54,7 +54,7 @@ public class Bishop extends Piece {
                     }
                     k++;
                 }
-                if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                if (!temp.getChessboard()[x][y].isPieceOn()) {
                     temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                     temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                     temp.getChessboard()[x][y].setPieceOn(true);
@@ -75,7 +75,7 @@ public class Bishop extends Piece {
                     }
                     k++;
                 }
-                if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                if (!temp.getChessboard()[x][y].isPieceOn()) {
                     temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                     temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                     temp.getChessboard()[x][y].setPieceOn(true);
@@ -96,7 +96,7 @@ public class Bishop extends Piece {
                     }
                     k++;
                 }
-                if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                if (!temp.getChessboard()[x][y].isPieceOn()) {
                     temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                     temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                     temp.getChessboard()[x][y].setPieceOn(true);
@@ -117,7 +117,7 @@ public class Bishop extends Piece {
                     }
                     k++;
                 }
-                if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                if (!temp.getChessboard()[x][y].isPieceOn()) {
                     temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                     temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                     temp.getChessboard()[x][y].setPieceOn(true);
@@ -132,7 +132,7 @@ public class Bishop extends Piece {
         }
 
     public void attackPiece(Board temp, int x, int y){
-        if(isattacklegal==false){
+        if(!isattacklegal){
             System.out.println("this move is illegal");
         }
         else{
@@ -160,7 +160,7 @@ public class Bishop extends Piece {
 
                 //checks if x is bigger and y is bigger
                         for (int i = 1; (getX()+i < 8)&&(getY()+i<8); i++) {
-                            if (temp.getChessboard()[getX() + i][getY() + i].isPieceOn() == false) {
+                            if (!temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
                                 temp.getChessboard()[getX() + i][getY() + i].attackedfromwhite = true;
                             }
                             else
@@ -176,7 +176,7 @@ public class Bishop extends Piece {
                     //out x is smaller then then location and y is smaller
 
                         for (int i = 1; (getX()-i >=0)&&(getY()-i>=0); i++) {
-                            if (temp.getChessboard()[getX() -i][getY() - i].isPieceOn() == false)
+                            if (!temp.getChessboard()[getX() - i][getY() - i].isPieceOn())
                             {
                                 temp.getChessboard()[getX() - i][getY() - i].attackedfromwhite = true;
                             }
@@ -191,7 +191,7 @@ public class Bishop extends Piece {
                         }
                         //when x is bigger and y is smaller
                         for (int i = 1; (i+getX() < 8)&&(getY()-i>-1); i++) {
-                        if (temp.getChessboard()[getX() + i][getY() - i].isPieceOn() == false)
+                        if (!temp.getChessboard()[getX() + i][getY() - i].isPieceOn())
                         {
                             temp.getChessboard()[getX() + i][getY() - i].attackedfromwhite = true;
                         }
@@ -206,7 +206,7 @@ public class Bishop extends Piece {
                     }
                 //our x is smaller then the location and y is bigger
                 for (int i = 1; i < 8; i++) {
-                        if (temp.getChessboard()[getX() -i][getY() + i].isPieceOn() == false) {
+                        if (!temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
                             temp.getChessboard()[getX() - i][getY() + i].attackedfromwhite = true;
                         }
                         else
@@ -224,7 +224,7 @@ public class Bishop extends Piece {
         else  {
             //checks if x is bigger and y is bigger
             for (int i = 1; (getX()+i < 8)&&(getY()+i<8); i++) {
-                if (temp.getChessboard()[getX() + i][getY() + i].isPieceOn() == false) {
+                if (!temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
                     temp.getChessboard()[getX() + i][getY() + i].attackedfromblack = true;
                 }
                 else
@@ -240,7 +240,7 @@ public class Bishop extends Piece {
             //out x is smaller then then location and y is smaller
 
             for (int i = 1; (getX()-i >=0)&&(getY()-i>=0); i++) {
-                if (temp.getChessboard()[getX() -i][getY() - i].isPieceOn() == false)
+                if (!temp.getChessboard()[getX() - i][getY() - i].isPieceOn())
                 {
                     temp.getChessboard()[getX() - i][getY() - i].attackedfromblack = true;
                 }
@@ -255,7 +255,7 @@ public class Bishop extends Piece {
             }
             //when x is bigger and y is smaller
             for (int i = 1; (i+getX() < 8)&&(getY()-i>-1); i++) {
-                if (temp.getChessboard()[getX() + i][getY() - i].isPieceOn() == false)
+                if (!temp.getChessboard()[getX() + i][getY() - i].isPieceOn())
                 {
                     temp.getChessboard()[getX() + i][getY() - i].attackedfromblack = true;
                     return;
@@ -271,7 +271,7 @@ public class Bishop extends Piece {
             }
             //our x is smaller then the location and y is bigger
             for (int i = 1; i < 8; i++) {
-                if (temp.getChessboard()[getX() -i][getY() + i].isPieceOn() == false)
+                if (!temp.getChessboard()[getX() - i][getY() + i].isPieceOn())
                 {
                     temp.getChessboard()[getX() - i][getY() + i].attackedfromblack = true;
                 }

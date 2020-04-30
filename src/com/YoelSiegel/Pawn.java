@@ -65,6 +65,10 @@ public class Pawn extends Piece {
     //all important functions are here and down
     public void movePiece(Board temp, int x, int y)
     {
+        if((y==getY()+1)||(y==getY()-1)){
+            attackPiece(temp, x, y);
+            return;
+        }
         if(getX()==getOriginalPlacement())
         {
             if (!temp.getChessboard()[getX() + getZ()][getY()].isPieceOn())
@@ -85,7 +89,6 @@ public class Pawn extends Piece {
                 }
                 else {
                     System.out.println("illegal move");
-                    return;
                 }
             }
 
@@ -99,7 +102,6 @@ public class Pawn extends Piece {
             }
             else{
                 System.out.println("illegal move");
-                return;
             }
         }
     }
@@ -131,7 +133,7 @@ public class Pawn extends Piece {
     //the all legal moves in pawn is not all legal moves it's all the moves that pawn can attack he can go to more places but we dont care cause the king can go there
     public void alltilesattacked(Board temp){
         if(getPieceColor()==PieceColor.WHITE) {
-            if (temp.getChessboard()[getX() + (1 * z)][getY() + 1].isPieceOn()==false){
+            if (!temp.getChessboard()[getX() + (1 * z)][getY() + 1].isPieceOn()){
                 temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromwhite=true;
             }
             else{
@@ -139,7 +141,7 @@ public class Pawn extends Piece {
                     temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromwhite=true;
                 }
             }
-            if (temp.getChessboard()[getX() + (1 * z)][getY() - 1].isPieceOn()==false){
+            if (!temp.getChessboard()[getX() + (1 * z)][getY() - 1].isPieceOn()){
                 temp.getChessboard()[getX() + (1 * z)][getY() - 1].attackedfromwhite=true;
             }
             else{
@@ -151,7 +153,7 @@ public class Pawn extends Piece {
         }
         else{
 
-                if (temp.getChessboard()[getX() + (1 * z)][getY() + 1].isPieceOn()==false){
+                if (!temp.getChessboard()[getX() + (1 * z)][getY() + 1].isPieceOn()){
                     temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromblack=true;
                 }
                 else{
@@ -159,7 +161,7 @@ public class Pawn extends Piece {
                         temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromblack=true;
                     }
                 }
-                if (temp.getChessboard()[getX() + (1 * z)][getY() - 1].isPieceOn()==false){
+                if (!temp.getChessboard()[getX() + (1 * z)][getY() - 1].isPieceOn()){
                     temp.getChessboard()[getX() + (1 * z)][getY() - 1].attackedfromblack=true;
                 }
                 else{

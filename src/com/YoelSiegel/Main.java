@@ -14,11 +14,15 @@ public class Main {
 
         Board myChess=new Board();
        myChess.makeBoard();
-        King temp1 = new King(PieceColor.WHITE,2,5);
-        myChess.getChessboard()[2][5].setPiece(temp1);
-        myChess.getChessboard()[2][5].getPiece().movePiece(myChess,5,6);
-
-
+      myChess.getChessboard()[1][0].getPiece().movePiece(myChess, 3, 0);
+        myChess.getChessboard()[0][0].getPiece().movePiece(myChess, 2, 0);
+        myChess.getChessboard()[2][0].getPiece().movePiece(myChess, 2, 2);
+        myChess.getChessboard()[2][2].getPiece().movePiece(myChess, 5, 2);
+        myChess.getChessboard()[6][1].getPiece().movePiece(myChess, 5, 2);
+        myChess.getChessboard()[7][2].getPiece().movePiece(myChess, 5, 0);
+        myChess.getChessboard()[0][1].getPiece().movePiece(myChess, 2, 2);
+        myChess.getChessboard()[6][4].getPiece().movePiece(myChess, 4, 4);
+        myChess.getChessboard()[7][3].getPiece().movePiece(myChess, 4, 6);
         myChess.printBoard();
     }
 

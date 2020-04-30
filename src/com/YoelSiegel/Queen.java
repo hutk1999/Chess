@@ -29,7 +29,6 @@ public class Queen extends Piece {
     public void movePiece(Board temp, int x, int y) {
         if(( x==this.getX())&&(y==this.getY())){
             System.out.print("this move is illegal");
-            return;
         }
         else
         {
@@ -134,7 +133,7 @@ public class Queen extends Piece {
                         }
                         k++;
                     }
-                    if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                    if (!temp.getChessboard()[x][y].isPieceOn()) {
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                         temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                         temp.getChessboard()[x][y].setPieceOn(true);
@@ -155,7 +154,7 @@ public class Queen extends Piece {
                         }
                         k++;
                     }
-                    if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                    if (!temp.getChessboard()[x][y].isPieceOn()) {
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                         temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                         temp.getChessboard()[x][y].setPieceOn(true);
@@ -176,7 +175,7 @@ public class Queen extends Piece {
                         }
                         k++;
                     }
-                    if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                    if (!temp.getChessboard()[x][y].isPieceOn()) {
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                         temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                         temp.getChessboard()[x][y].setPieceOn(true);
@@ -197,7 +196,7 @@ public class Queen extends Piece {
                         }
                         k++;
                     }
-                    if (temp.getChessboard()[x][y].isPieceOn() == false) {
+                    if (!temp.getChessboard()[x][y].isPieceOn()) {
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                         temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                         temp.getChessboard()[x][y].setPieceOn(true);
@@ -214,7 +213,7 @@ public class Queen extends Piece {
 
     //we dont need anything special...
     public void attackPiece(Board temp,int x,int y){
-        if(isattacklegal==false){
+        if(!isattacklegal){
             System.out.println("this move is illegal cause you can't reach here");
             return;
         }
@@ -241,7 +240,7 @@ public class Queen extends Piece {
 
             //checks if x is bigger and y is bigger
             for (int i = 1; (getX() + i < 8) && (getY() + i < 8); i++) {
-                if (temp.getChessboard()[getX() + i][getY() + i].isPieceOn() == false) {
+                if (!temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
                     temp.getChessboard()[getX() + i][getY() + i].attackedfromwhite = true;
                 } else {
                     if (temp.getChessboard()[getX() + i][getY() + i].getPiece().getPieceColor() == PieceColor.BLACK) {
@@ -254,7 +253,7 @@ public class Queen extends Piece {
             //out x is smaller then then location and y is smaller
 
             for (int i = 1; (getX() - i >= 0) && (getY() - i >= 0); i++) {
-                if (temp.getChessboard()[getX() - i][getY() - i].isPieceOn() == false) {
+                if (!temp.getChessboard()[getX() - i][getY() - i].isPieceOn()) {
                     temp.getChessboard()[getX() - i][getY() - i].attackedfromwhite = true;
                 } else {
                     if (temp.getChessboard()[getX() - i][getY() - i].getPiece().getPieceColor() == PieceColor.BLACK) {
@@ -265,7 +264,7 @@ public class Queen extends Piece {
             }
             //when x is bigger and y is smaller
             for (int i = 1; (i + getX() < 8) && (getY() - i > -1); i++) {
-                if (temp.getChessboard()[getX() + i][getY() - i].isPieceOn() == false) {
+                if (!temp.getChessboard()[getX() + i][getY() - i].isPieceOn()) {
                     temp.getChessboard()[getX() + i][getY() - i].attackedfromwhite = true;
                 } else {
                     if (temp.getChessboard()[getX() + i][getY() - i].getPiece().getPieceColor() == PieceColor.BLACK) {
@@ -276,7 +275,7 @@ public class Queen extends Piece {
             }
             //our x is smaller then the location and y is bigger
             for (int i = 1; i < 8; i++) {
-                if (temp.getChessboard()[getX() - i][getY() + i].isPieceOn() == false) {
+                if (!temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
                     temp.getChessboard()[getX() - i][getY() + i].attackedfromwhite = true;
                 } else {
                     if (temp.getChessboard()[getX() - i][getY() + i].getPiece().getPieceColor() == PieceColor.BLACK) {
@@ -290,7 +289,7 @@ public class Queen extends Piece {
         } else {
             //checks if x is bigger and y is bigger
             for (int i = 1; (getX() + i < 8) && (getY() + i < 8); i++) {
-                if (temp.getChessboard()[getX() + i][getY() + i].isPieceOn() == false) {
+                if (!temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
                     temp.getChessboard()[getX() + i][getY() + i].attackedfromblack = true;
                 } else {
                     if (temp.getChessboard()[getX() + i][getY() + i].getPiece().getPieceColor() == PieceColor.WHITE) {
@@ -303,7 +302,7 @@ public class Queen extends Piece {
             //out x is smaller then then location and y is smaller
 
             for (int i = 1; (getX() - i >= 0) && (getY() - i >= 0); i++) {
-                if (temp.getChessboard()[getX() - i][getY() - i].isPieceOn() == false) {
+                if (!temp.getChessboard()[getX() - i][getY() - i].isPieceOn()) {
                     temp.getChessboard()[getX() - i][getY() - i].attackedfromblack = true;
                 } else {
                     if (temp.getChessboard()[getX() - i][getY() - i].getPiece().getPieceColor() == PieceColor.WHITE) {
@@ -314,7 +313,7 @@ public class Queen extends Piece {
             }
             //when x is bigger and y is smaller
             for (int i = 1; (i + getX() < 8) && (getY() - i > -1); i++) {
-                if (temp.getChessboard()[getX() + i][getY() - i].isPieceOn() == false) {
+                if (!temp.getChessboard()[getX() + i][getY() - i].isPieceOn()) {
                     temp.getChessboard()[getX() + i][getY() - i].attackedfromblack = true;
                     return;
                 } else {
@@ -326,7 +325,7 @@ public class Queen extends Piece {
             }
             //our x is smaller then the location and y is bigger
             for (int i = 1; i < 8; i++) {
-                if (temp.getChessboard()[getX() - i][getY() + i].isPieceOn() == false) {
+                if (!temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
                     temp.getChessboard()[getX() - i][getY() + i].attackedfromblack = true;
                 } else {
                     if (temp.getChessboard()[getX() - i][getY() + i].getPiece().getPieceColor() == PieceColor.WHITE) {

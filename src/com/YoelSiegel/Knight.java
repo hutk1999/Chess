@@ -32,10 +32,7 @@ public class Knight extends Piece {
         } else if (this.getX() - 2 == x && this.getY() + 1 == y) {
             legalmove = true;
         }
-        if (legalmove == true) {
-            return true;
-        } else
-            return false;
+        return legalmove;
     }
 
     public Knight(PieceColor ecolor, int x, int y) {
@@ -79,7 +76,6 @@ public class Knight extends Piece {
         if (!isLegal)
         {
             System.out.println("this move is illegal");
-            return;
         }
         else
             {
@@ -102,7 +98,7 @@ public class Knight extends Piece {
 
     public void attackPiece(Board temp, int x, int y)
     {
-        if(isMoveLegal(x,y)==false){
+        if(!isMoveLegal(x, y)){
             System.out.println("this is an invalid place for the rook");
             return;
         }
@@ -110,7 +106,6 @@ public class Knight extends Piece {
             if (!temp.getChessboard()[x][y].isPieceOn())
             {
                 System.out.println("this move is illegal because its not a attack");
-                return;
             }
             else
                 {

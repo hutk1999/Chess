@@ -12,6 +12,14 @@ public class Piece {
         this.y = y;
     }
 
+    public boolean isIsattacklegal() {
+        return isattacklegal;
+    }
+
+    public void setIsattacklegal(boolean isattacklegal) {
+        this.isattacklegal = isattacklegal;
+    }
+
     public PieceColor getPieceColor() {
         return piececolor;
     }

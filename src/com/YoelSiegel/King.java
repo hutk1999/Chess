@@ -22,11 +22,9 @@ public class King extends Piece {
     public void movePiece(Board temp,int x,int y){
         if((x==getX())&&(y==getY())){
             System.out.println("you arent moving anywhere");
-            return;
         }
         else if((Math.abs(x-getX())>1)||((Math.abs(y-getY())>1))){
             System.out.println("this move is illegal");
-            return;
         }
         else{
             if(temp.getChessboard()[x][y].isPieceOn())
@@ -45,7 +43,7 @@ public class King extends Piece {
     }
     }
     public void attackpiece(Board temp,int x,int y){
-        if(isattacklegal==false){
+        if(!isattacklegal){
             System.out.println("this move is illegal cause you can't reach here");
             return;
         }
