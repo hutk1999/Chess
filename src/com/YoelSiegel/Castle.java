@@ -1,26 +1,38 @@
 package com.YoelSiegel;
 
-import javax.swing.*;
-
 public class Castle extends Piece {
+
     private boolean ismovelegal=true;
     private String type="Castle";
+
+
+
+    public Castle(PieceColor pieceColor, int x, int y) {
+        super(pieceColor, x, y);
+    }
+    public void printPiece(){
+        System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
+        System.out.print("c ");
+    }
 
     public boolean isIsmovelegal() {
         return ismovelegal;
     }
-
     public void setIsmovelegal(boolean ismovelegal) {
         this.ismovelegal = ismovelegal;
     }
-
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
+
+
+
+
+    //all important functions are under here
+
     public void movePiece(Board temp,int x,int y){
         //if they are not on the same tzir
         if(( x!=this.getX())&&(y!=this.getY())){
@@ -122,20 +134,26 @@ public class Castle extends Piece {
             }
     }
 
-
     @Override
     public void attackPiece(Board temp, int x, int y) {
-        System.out.print("in the attck of castle");
+        if (temp.getChessboard()[x][y].getPiece().getPieceColor() == this.getPieceColor()) {
+            System.out.println("this move is illegal you are attacking your own piece");
+        } else {
+            System.out.print("in the attack of castle");
 
-        super.attackPiece(temp, x, y);
-        temp.getChessboard()[x][y].setPiece(this);
-        temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
-        temp.getChessboard()[x][y].setPieceOn(true);
-        setX(x);
-        setY(y);
+            super.attackPiece(temp, x, y);
+            temp.getChessboard()[x][y].setPiece(this);
+            temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+            temp.getChessboard()[x][y].setPieceOn(true);
+            setX(x);
+            setY(y);
+        }
     }
+
+
     //checks all the places this guy is threatning
-    public void alllegalmoves(Board temp)
+    //i checked and this function is perfect
+    public void alltilesattacked(Board temp)
     {
         //checks all the places on the same y axis going up for white
         if (this.getPieceColor() == PieceColor.WHITE)
@@ -154,6 +172,7 @@ public class Castle extends Piece {
                     {
                         temp.getChessboard()[i][getY()].attackedfromwhite = true;
                     }
+                    break;
                 }
             }
             //checks all the places on the y axis going down
@@ -170,6 +189,7 @@ public class Castle extends Piece {
                     {
                         temp.getChessboard()[i][getY()].attackedfromwhite = true;
                     }
+                    break;
                 }
             }
             //checks all the places on the x axis going up
@@ -186,7 +206,8 @@ public class Castle extends Piece {
                     {
                         temp.getChessboard()[getX()][i].attackedfromwhite = true;
                     }
-                }
+                        break;
+                    }
             }
             //checks all the pieces on the x axis going down
             while ((!temp.getChessboard()[getX()][i].isPieceOn()) && (i > -1))
@@ -202,6 +223,7 @@ public class Castle extends Piece {
                     {
                         temp.getChessboard()[getX()][i].attackedfromwhite = true;
                     }
+                            break;
                 }
             }
         }
@@ -214,14 +236,15 @@ public class Castle extends Piece {
                     i = i + 1;
                     if (!temp.getChessboard()[i][getY()].isPieceOn())
                     {
-                        temp.getChessboard()[i][getY()].attatckedfromblack = true;
+                        temp.getChessboard()[i][getY()].attackedfromblack = true;
                     }
                     else
                         {
-                        if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.BLACK)
+                        if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.WHITE)
                         {
-                            temp.getChessboard()[i][getY()].attatckedfromblack = true;
+                            temp.getChessboard()[i][getY()].attackedfromblack = true;
                         }
+                                 break;
                     }
                 }
                 //checks all the places on the y axis going down
@@ -230,14 +253,15 @@ public class Castle extends Piece {
                     i = i -1;
                     if (!temp.getChessboard()[i][getY()].isPieceOn())
                     {
-                        temp.getChessboard()[i][getY()].attatckedfromblack = true;
+                        temp.getChessboard()[i][getY()].attackedfromblack = true;
                     }
                     else
                         {
-                        if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.BLACK)
+                        if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.WHITE)
                         {
-                            temp.getChessboard()[i][getY()].attatckedfromblack = true;
+                            temp.getChessboard()[i][getY()].attackedfromblack = true;
                         }
+                        break;
                     }
                 }
                 //checks all the places on the x axis going up
@@ -246,14 +270,15 @@ public class Castle extends Piece {
                     i = i +1;
                     if (!temp.getChessboard()[getX()][i].isPieceOn())
                     {
-                        temp.getChessboard()[getX()][i].attatckedfromblack = true;
+                        temp.getChessboard()[getX()][i].attackedfromblack = true;
                     }
                     else
                         {
-                        if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.BLACK)
+                        if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.WHITE)
                         {
-                            temp.getChessboard()[getX()][i].attatckedfromblack = true;
+                            temp.getChessboard()[getX()][i].attackedfromblack = true;
                         }
+                        break;
                     }
                 }
                 //checks all the pieces on the x axis going down
@@ -262,26 +287,21 @@ public class Castle extends Piece {
                     i = i -1;
                     if (!temp.getChessboard()[getX()][i].isPieceOn())
                     {
-                        temp.getChessboard()[getX()][i].attatckedfromblack = true;
+                        temp.getChessboard()[getX()][i].attackedfromblack = true;
                     }
                     else
                         {
-                        if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.BLACK)
+                        if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.WHITE)
                         {
-                            temp.getChessboard()[getX()][i].attatckedfromblack = true;
+                            temp.getChessboard()[getX()][i].attackedfromblack = true;
                         }
+                        break;
                     }
                 }
             }
     }
 
-    public Castle(PieceColor pieceColor, int x, int y) {
-        super(pieceColor, x, y);
-    }
-    public void printPiece(){
-        System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
-        System.out.print("c ");
-    }
+
 }
 
 

@@ -12,30 +12,6 @@ public class Knight extends Piece {
     public void setType(String type) {
         this.type = type;
     }
-    public void alllegalmoves(Board temp){
-        if(this.getPieceColor()==PieceColor.WHITE)
-        {
-            temp.getChessboard()[getX() + 1][getY() + 2].attackedfromwhite = true;
-            temp.getChessboard()[getX() + 2][getY() + 1].attackedfromwhite = true;
-            temp.getChessboard()[getX() + 1][getY() - 2].attackedfromwhite = true;
-            temp.getChessboard()[getX() + 2][getY() - 1].attackedfromwhite = true;
-            temp.getChessboard()[getX() - 1][getY() + 2].attackedfromwhite = true;
-            temp.getChessboard()[getX() - 1][getY() - 2].attackedfromwhite = true;
-            temp.getChessboard()[getX() - 2][getY() + 1].attackedfromwhite = true;
-            temp.getChessboard()[getX() - 2][getY() - 1].attackedfromwhite = true;
-        }
-        else
-        {
-            temp.getChessboard()[getX() + 1][getY() + 2].attatckedfromblack = true;
-            temp.getChessboard()[getX() + 2][getY() + 1].attatckedfromblack = true;
-            temp.getChessboard()[getX() + 1][getY() - 2].attatckedfromblack = true;
-            temp.getChessboard()[getX() + 2][getY() - 1].attatckedfromblack = true;
-            temp.getChessboard()[getX() - 1][getY() + 2].attatckedfromblack = true;
-            temp.getChessboard()[getX() - 1][getY() - 2].attatckedfromblack= true;
-            temp.getChessboard()[getX() - 2][getY() + 1].attatckedfromblack = true;
-            temp.getChessboard()[getX() - 2][getY() - 1].attatckedfromblack = true;
-        }
-    }
 
     //checks all the possibilities that rook has
     public boolean isMoveLegal(int x, int y) {
@@ -66,6 +42,38 @@ public class Knight extends Piece {
         super(ecolor, x, y);
     }
 
+    public void printPiece()
+    {
+        System.out.print(this.getPieceColor() == PieceColor.WHITE ? "w" : "b");
+        System.out.print("h ");
+    }
+
+//this one also is perfect but it also marks tiles that are occupied by its own color to be marked attacked but there is no reason that should matter
+    public void alltilesattacked(Board temp){
+        if(this.getPieceColor()==PieceColor.WHITE)
+        {
+            temp.getChessboard()[getX() + 1][getY() + 2].attackedfromwhite = true;
+            temp.getChessboard()[getX() + 2][getY() + 1].attackedfromwhite = true;
+            temp.getChessboard()[getX() + 1][getY() - 2].attackedfromwhite = true;
+            temp.getChessboard()[getX() + 2][getY() - 1].attackedfromwhite = true;
+            temp.getChessboard()[getX() - 1][getY() + 2].attackedfromwhite = true;
+            temp.getChessboard()[getX() - 1][getY() - 2].attackedfromwhite = true;
+            temp.getChessboard()[getX() - 2][getY() + 1].attackedfromwhite = true;
+            temp.getChessboard()[getX() - 2][getY() - 1].attackedfromwhite = true;
+        }
+        else
+        {
+            temp.getChessboard()[getX() + 1][getY() + 2].attackedfromblack = true;
+            temp.getChessboard()[getX() + 2][getY() + 1].attackedfromblack = true;
+            temp.getChessboard()[getX() + 1][getY() - 2].attackedfromblack = true;
+            temp.getChessboard()[getX() + 2][getY() - 1].attackedfromblack = true;
+            temp.getChessboard()[getX() - 1][getY() + 2].attackedfromblack = true;
+            temp.getChessboard()[getX() - 1][getY() - 2].attackedfromblack = true;
+            temp.getChessboard()[getX() - 2][getY() + 1].attackedfromblack = true;
+            temp.getChessboard()[getX() - 2][getY() - 1].attackedfromblack = true;
+        }
+    }
+
     public void movePiece(Board temp, int x, int y) {
         isLegal= isMoveLegal(x,y);
         if (!isLegal)
@@ -83,6 +91,7 @@ public class Knight extends Piece {
                 temp.getChessboard()[x][y].setPieceOn(true);
                 setX(x);
                 setY(y);
+                this.legalmove=false;
             }
             else
                 {
@@ -93,12 +102,11 @@ public class Knight extends Piece {
 
     public void attackPiece(Board temp, int x, int y)
     {
-        if (!isMoveLegal(x, y))
-        {
+        if(isMoveLegal(x,y)==false){
+            System.out.println("this is an invalid place for the rook");
             return;
         }
-        else
-            {
+
             if (!temp.getChessboard()[x][y].isPieceOn())
             {
                 System.out.println("this move is illegal because its not a attack");
@@ -117,15 +125,12 @@ public class Knight extends Piece {
                     temp.getChessboard()[x][y].setPieceOn(true);
                     setX(x);
                     setY(y);
+                    isLegal=false;
                 }
             }
         }
-    }
 
-        public void printPiece()
-        {
-            System.out.print(this.getPieceColor() == PieceColor.WHITE ? "w" : "b");
-            System.out.print("h ");
-        }
+
+
     }
 

@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.util.Scanner;
 
 public class Main {
-
+//there are lots of double code in the attacks and moves we need to make attack unaccesible at all except from move unless its pawn  idea is to say unless move sent it its illegal
 
     public static void main(String[] args) {
        Scanner scanNum = new Scanner(System.in);
@@ -14,13 +14,11 @@ public class Main {
 
         Board myChess=new Board();
        myChess.makeBoard();
-       //myChess.getChessboard()[7][1].getPiece().movePiece(myChess,5,2);
-        myChess.getChessboard()[1][0].getPiece().movePiece(myChess, 3,0);
-        myChess.getChessboard()[0][0].getPiece().movePiece(myChess, 2, 0);
-        myChess.getChessboard()[2][0].getPiece().movePiece(myChess, 2, 2);
-        myChess.getChessboard()[2][2].getPiece().movePiece(myChess, 6, 2);
-         myChess.printBoard();
+        Pawn temp1 = new Pawn(PieceColor.WHITE,2,5);
+        myChess.getChessboard()[2][5].setPiece(temp1);
+        myChess.getChessboard()[1][3].getPiece().attackPiece(myChess,2,5);
 
+        myChess.printBoard();
     }
 
 

@@ -3,8 +3,13 @@ package com.YoelSiegel;
 public class Pawn extends Piece {
 
     private String type ="Pawn";
+    //z at 1 means you are black and at the top
+    // z at -1 means you are white and at the bottom
     private int z=0;
     private int originalPlacement=0;
+
+
+
     public Pawn(PieceColor pieceColor, int x, int y)
     {
         super(pieceColor, x, y);
@@ -40,7 +45,6 @@ public class Pawn extends Piece {
         this.originalPlacement = originalPlacement;
     }
 
-
     public String getType()
     {
         return type;
@@ -50,6 +54,15 @@ public class Pawn extends Piece {
     {
         this.type = type;
     }
+
+    public void printPiece()
+    {
+        System.out.print(this.getPieceColor()==PieceColor.WHITE?"w": "b");
+        System.out.print("p ");
+    }
+
+    //need to merge these somehow
+    //all important functions are here and down
     public void movePiece(Board temp, int x, int y)
     {
         if(getX()==getOriginalPlacement())
@@ -114,14 +127,54 @@ public class Pawn extends Piece {
 
     }
 
-    public void printPiece()
-    {
-        System.out.print(this.getPieceColor()==PieceColor.WHITE?"w": "b");
-        System.out.print("p ");
+
+    //the all legal moves in pawn is not all legal moves it's all the moves that pawn can attack he can go to more places but we dont care cause the king can go there
+    public void alltilesattacked(Board temp){
+        if(getPieceColor()==PieceColor.WHITE) {
+            if (temp.getChessboard()[getX() + (1 * z)][getY() + 1].isPieceOn()==false){
+                temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromwhite=true;
+            }
+            else{
+                if( temp.getChessboard()[getX() + (1 * z)][getY() + 1].getPiece().getPieceColor()==PieceColor.BLACK){
+                    temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromwhite=true;
+                }
+            }
+            if (temp.getChessboard()[getX() + (1 * z)][getY() - 1].isPieceOn()==false){
+                temp.getChessboard()[getX() + (1 * z)][getY() - 1].attackedfromwhite=true;
+            }
+            else{
+                if( temp.getChessboard()[getX() + (1 * z)][getY() - 1].getPiece().getPieceColor()==PieceColor.BLACK){
+                    temp.getChessboard()[getX() + (1 * z)][getY() - 1].attackedfromwhite=true;
+                }
+            }
+
+        }
+        else{
+
+                if (temp.getChessboard()[getX() + (1 * z)][getY() + 1].isPieceOn()==false){
+                    temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromblack=true;
+                }
+                else{
+                    if( temp.getChessboard()[getX() + (1 * z)][getY() + 1].getPiece().getPieceColor()==PieceColor.WHITE){
+                        temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromblack=true;
+                    }
+                }
+                if (temp.getChessboard()[getX() + (1 * z)][getY() - 1].isPieceOn()==false){
+                    temp.getChessboard()[getX() + (1 * z)][getY() - 1].attackedfromblack=true;
+                }
+                else{
+                    if( temp.getChessboard()[getX() + (1 * z)][getY() - 1].getPiece().getPieceColor()==PieceColor.WHITE){
+                        temp.getChessboard()[getX() + (1 * z)][getY() - 1].attackedfromblack=true;
+                    }
+                }
+
+            }
+
+
+        }
     }
 
 
 
-}
 
 

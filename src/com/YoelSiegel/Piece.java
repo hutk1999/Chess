@@ -5,6 +5,7 @@ public class Piece {
     private int y;
     private PieceColor piececolor;
 
+
     public Piece(PieceColor pieceColor, int x, int y) {
         this.piececolor = pieceColor;
         this.x = x;
@@ -18,8 +19,6 @@ public class Piece {
     public void setPieceColor(PieceColor pieceColor) {
         this.piececolor = pieceColor;
     }
-
-    public void movePiece(Board temp,int x,int y){}
 
     public int getX()
     {
@@ -40,8 +39,14 @@ public class Piece {
     {
         this.y = y;
     }
-    public void alllegalmoves(){}
 
     public void printPiece(){}
+
+
+
+    public void movePiece(Board temp,int x,int y){}
+
+    public void alltilesattacked(Board temp){}
+
     public void attackPiece(Board temp,int x,int y){}
 }

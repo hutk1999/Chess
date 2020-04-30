@@ -18,4 +18,5 @@ public class King extends Piece {
         System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
         System.out.print("k ");
     }
+
 }
