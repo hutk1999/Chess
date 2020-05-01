@@ -1,8 +1,10 @@
 package com.YoelSiegel;
+
 import java.lang.Math;
+
 public class King extends Piece {
-    boolean isattacklegal=false;
-    private String type="King";
+    boolean isattacklegal = false;
+    private String type = "King";
 
     public String getType() {
         return type;
@@ -15,35 +17,34 @@ public class King extends Piece {
     public King(PieceColor ecolor, int x, int y) {
         super(ecolor, x, y);
     }
-    public void printPiece(){
-        System.out.print(this.getPieceColor()==PieceColor.WHITE?"w":"b");
+
+    public void printPiece() {
+        System.out.print(this.getPieceColor() == PieceColor.WHITE ? "w" : "b");
         System.out.print("k ");
     }
-    public void movePiece(Board temp,int x,int y){
-        if((x==getX())&&(y==getY())){
+
+    public void movePiece(Board temp, int x, int y) {
+        if ((x == getX()) && (y == getY())) {
             System.out.println("you arent moving anywhere");
-        }
-        else if((Math.abs(x-getX())>1)||((Math.abs(y-getY())>1))){
+        } else if ((Math.abs(x - getX()) > 1) || ((Math.abs(y - getY()) > 1))) {
             System.out.println("this move is illegal");
-        }
-        else{
-            if(temp.getChessboard()[x][y].isPieceOn())
-            {
-            isattacklegal=true;
-            attackpiece(temp,x,y);
-        }
-            else {
+        } else {
+            if (temp.getChessboard()[x][y].isPieceOn()) {
+                isattacklegal = true;
+                attackpiece(temp, x, y);
+            } else {
                 System.out.print("this move is legal");
-                temp.getChessboard()[x][y]= temp.getChessboard()[getX()][getY()];
-                temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+                temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
+                temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                 temp.getChessboard()[x][y].setPieceOn(true);
                 setX(x);
                 setY(y);
             }
+        }
     }
-    }
-    public void attackpiece(Board temp,int x,int y){
-        if(!isattacklegal){
+
+    public void attackpiece(Board temp, int x, int y) {
+        if (!isattacklegal) {
             System.out.println("this move is illegal cause you can't reach here");
             return;
         }
@@ -58,7 +59,7 @@ public class King extends Piece {
             temp.getChessboard()[x][y].setPieceOn(true);
             setX(x);
             setY(y);
-            isattacklegal=false;
+            isattacklegal = false;
         }
 
     }

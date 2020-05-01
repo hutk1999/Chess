@@ -28,33 +28,32 @@ public class Piece {
         this.piececolor = pieceColor;
     }
 
-    public int getX()
-    {
+    public int getX() {
         return x;
     }
 
-    public void setX(int x)
-    {
+    public void setX(int x) {
         this.x = x;
     }
 
-    public int getY()
-    {
+    public int getY() {
         return y;
     }
 
-    public void setY(int y)
-    {
+    public void setY(int y) {
         this.y = y;
     }
 
-    public void printPiece(){}
+    public void printPiece() {
+    }
 
 
+    public void movePiece(Board temp, int x, int y) {
+    }
 
-    public void movePiece(Board temp,int x,int y){}
+    public void alltilesattacked(Board temp) {
+    }
 
-    public void alltilesattacked(Board temp){}
-
-    public void attackPiece(Board temp,int x,int y){}
+    public void attackPiece(Board temp, int x, int y) {
+    }
 }
