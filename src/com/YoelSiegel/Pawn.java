@@ -54,6 +54,21 @@ public class Pawn extends Piece {
     //all important functions are here and down
     public void movePiece(Board temp, int x, int y) {
         if ((y == getY() + 1) || (y == getY() - 1)) {
+            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])||(temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                if(temp.getChessboard()[getX()][getY()].getTileColor()==PieceColor.BLACK){
+                    if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[1])){
+                        System.out.println("This move endangers the white king");
+                        return;
+                    }
+                }
+                else{
+                    if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                        System.out.println("This move endangers the black king");
+                        return;
+                    }
+                }
+
+            }
             attackPiece(temp, x, y);
             return;
         }
@@ -107,47 +122,6 @@ public class Pawn extends Piece {
             }
         } else
             System.out.println("that move is illegal");
-
-    }
-
-
-    //the all legal moves in pawn is not all legal moves it's all the moves that pawn can attack he can go to more places but we dont care cause the king can go there
-    public void alltilesattacked(Board temp) {
-        if (getPieceColor() == PieceColor.WHITE) {
-            if (!temp.getChessboard()[getX() + (1 * z)][getY() + 1].isPieceOn()) {
-                temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromwhite = true;
-            } else {
-                if (temp.getChessboard()[getX() + (1 * z)][getY() + 1].getPiece().getPieceColor() == PieceColor.BLACK) {
-                    temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromwhite = true;
-                }
-            }
-            if (!temp.getChessboard()[getX() + (1 * z)][getY() - 1].isPieceOn()) {
-                temp.getChessboard()[getX() + (1 * z)][getY() - 1].attackedfromwhite = true;
-            } else {
-                if (temp.getChessboard()[getX() + (1 * z)][getY() - 1].getPiece().getPieceColor() == PieceColor.BLACK) {
-                    temp.getChessboard()[getX() + (1 * z)][getY() - 1].attackedfromwhite = true;
-                }
-            }
-
-        } else {
-
-            if (!temp.getChessboard()[getX() + (1 * z)][getY() + 1].isPieceOn()) {
-                temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromblack = true;
-            } else {
-                if (temp.getChessboard()[getX() + (1 * z)][getY() + 1].getPiece().getPieceColor() == PieceColor.WHITE) {
-                    temp.getChessboard()[getX() + (1 * z)][getY() + 1].attackedfromblack = true;
-                }
-            }
-            if (!temp.getChessboard()[getX() + (1 * z)][getY() - 1].isPieceOn()) {
-                temp.getChessboard()[getX() + (1 * z)][getY() - 1].attackedfromblack = true;
-            } else {
-                if (temp.getChessboard()[getX() + (1 * z)][getY() - 1].getPiece().getPieceColor() == PieceColor.WHITE) {
-                    temp.getChessboard()[getX() + (1 * z)][getY() - 1].attackedfromblack = true;
-                }
-            }
-
-        }
-
 
     }
 }

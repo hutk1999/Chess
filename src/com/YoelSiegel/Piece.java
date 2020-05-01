@@ -4,7 +4,14 @@ public class Piece {
     private int x;
     private int y;
     private PieceColor piececolor;
-    private boolean isattacklegal;//this is here so no one can access attack not from move
+    private boolean canMovetoKing = true;
+    public boolean isCanMovetoKing() {
+        return canMovetoKing;
+    }
+
+    public void setCanMovetoKing(boolean canMovetoKing) {
+        this.canMovetoKing = canMovetoKing;
+    }
 
     public Piece(PieceColor pieceColor, int x, int y) {
         this.piececolor = pieceColor;
@@ -12,13 +19,9 @@ public class Piece {
         this.y = y;
     }
 
-    public boolean isIsattacklegal() {
-        return isattacklegal;
-    }
 
-    public void setIsattacklegal(boolean isattacklegal) {
-        this.isattacklegal = isattacklegal;
-    }
+
+
 
     public PieceColor getPieceColor() {
         return piececolor;
@@ -51,8 +54,7 @@ public class Piece {
     public void movePiece(Board temp, int x, int y) {
     }
 
-    public void alltilesattacked(Board temp) {
-    }
+
 
     public void attackPiece(Board temp, int x, int y) {
     }

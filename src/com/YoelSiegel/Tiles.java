@@ -5,8 +5,7 @@ public class Tiles {
     private boolean isPieceOn;
     private Piece piece;
     private PieceColor tileColor;
-    boolean attackedfromwhite = false;
-    boolean attackedfromblack = false;
+
 
     public boolean isPieceOn() {
         return isPieceOn;

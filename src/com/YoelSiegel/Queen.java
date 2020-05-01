@@ -3,7 +3,7 @@ package com.YoelSiegel;
 public class Queen extends Piece {
 
     private String type = "Queen";
-    private boolean isattacklegal = true;
+
 
     public String getType() {
         return type;
@@ -39,6 +39,21 @@ public class Queen extends Piece {
                             return;
                         }
                     }
+                    if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])||(temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                        if(temp.getChessboard()[getX()][getY()].getTileColor()==PieceColor.BLACK){
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[1])){
+                                System.out.println("This move endangers the white king");
+                                return;
+                            }
+                        }
+                        else{
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                                System.out.println("This move endangers the black king");
+                                return;
+                            }
+                        }
+
+                    }
                     if (!temp.getChessboard()[x][y].isPieceOn()) {
                         System.out.print("this move is legal");
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
@@ -47,7 +62,7 @@ public class Queen extends Piece {
                         setX(x);
                         setY(y);
                     } else {
-                        isattacklegal = true;
+
                         attackPiece(temp, x, y);
                     }
 
@@ -69,7 +84,6 @@ public class Queen extends Piece {
                         setX(x);
                         setY(y);
                     } else {
-                        isattacklegal = true;
                         attackPiece(temp, x, y);
                     }
                 }
@@ -81,6 +95,21 @@ public class Queen extends Piece {
                             return;
                         }
                     }
+                    if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])||(temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                        if(temp.getChessboard()[getX()][getY()].getTileColor()==PieceColor.BLACK){
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[1])){
+                                System.out.println("This move endangers the white king");
+                                return;
+                            }
+                        }
+                        else{
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                                System.out.println("This move endangers the black king");
+                                return;
+                            }
+                        }
+
+                    }
                     if (!temp.getChessboard()[x][y].isPieceOn()) {
                         System.out.print("this move is legal");
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
@@ -89,7 +118,6 @@ public class Queen extends Piece {
                         setX(x);
                         setY(y);
                     } else {
-                        isattacklegal = true;
                         attackPiece(temp, x, y);
                     }
                 }
@@ -101,6 +129,21 @@ public class Queen extends Piece {
                             return;
                         }
                     }
+                    if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])||(temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                        if(temp.getChessboard()[getX()][getY()].getTileColor()==PieceColor.BLACK){
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[1])){
+                                System.out.println("This move endangers the white king");
+                                return;
+                            }
+                        }
+                        else{
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                                System.out.println("This move endangers the black king");
+                                return;
+                            }
+                        }
+
+                    }
                     if (!temp.getChessboard()[x][y].isPieceOn()) {
                         System.out.print("this move is legal");
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
@@ -109,7 +152,6 @@ public class Queen extends Piece {
                         setX(x);
                         setY(y);
                     } else {
-                        isattacklegal = true;
                         attackPiece(temp, x, y);
                     }
                 }
@@ -125,6 +167,21 @@ public class Queen extends Piece {
                             return;
                         }
                     }
+                    if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])||(temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                        if(temp.getChessboard()[getX()][getY()].getTileColor()==PieceColor.BLACK){
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[1])){
+                                System.out.println("This move endangers the white king");
+                                return;
+                            }
+                        }
+                        else{
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                                System.out.println("This move endangers the black king");
+                                return;
+                            }
+                        }
+
+                    }
                     if (!temp.getChessboard()[x][y].isPieceOn()) {
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                         temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
@@ -132,7 +189,6 @@ public class Queen extends Piece {
                         setX(x);
                         setY(y);
                     } else {
-                        isattacklegal = true;
                         attackPiece(temp, x, y);
                     }
                 }
@@ -144,6 +200,21 @@ public class Queen extends Piece {
                             return;
                         }
                     }
+                    if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])||(temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                        if(temp.getChessboard()[getX()][getY()].getTileColor()==PieceColor.BLACK){
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[1])){
+                                System.out.println("This move endangers the white king");
+                                return;
+                            }
+                        }
+                        else{
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                                System.out.println("This move endangers the black king");
+                                return;
+                            }
+                        }
+
+                    }
                     if (!temp.getChessboard()[x][y].isPieceOn()) {
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                         temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
@@ -151,7 +222,6 @@ public class Queen extends Piece {
                         setX(x);
                         setY(y);
                     } else {
-                        isattacklegal = true;
                         attackPiece(temp, x, y);
                     }
                 }
@@ -163,6 +233,21 @@ public class Queen extends Piece {
                             return;
                         }
                     }
+                    if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])||(temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                        if(temp.getChessboard()[getX()][getY()].getTileColor()==PieceColor.BLACK){
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[1])){
+                                System.out.println("This move endangers the white king");
+                                return;
+                            }
+                        }
+                        else{
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                                System.out.println("This move endangers the black king");
+                                return;
+                            }
+                        }
+
+                    }
                     if (!temp.getChessboard()[x][y].isPieceOn()) {
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                         temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
@@ -170,7 +255,6 @@ public class Queen extends Piece {
                         setX(x);
                         setY(y);
                     } else {
-                        isattacklegal = true;
                         attackPiece(temp, x, y);
                     }
                 } else if ((getX() > x) && (getY() < y))
@@ -183,6 +267,21 @@ public class Queen extends Piece {
                             return;
                         }
                     }
+                    if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])||(temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                        if(temp.getChessboard()[getX()][getY()].getTileColor()==PieceColor.BLACK){
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[1])){
+                                System.out.println("This move endangers the white king");
+                                return;
+                            }
+                        }
+                        else{
+                            if((temp.getChessboard()[x][y].getPiece()==temp.arrofKings[0])){
+                                System.out.println("This move endangers the black king");
+                                return;
+                            }
+                        }
+
+                    }
                     if (!temp.getChessboard()[x][y].isPieceOn()) {
                         temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
                         temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
@@ -190,7 +289,6 @@ public class Queen extends Piece {
                         setX(x);
                         setY(y);
                     } else {
-                        isattacklegal = true;
                         attackPiece(temp, x, y);
                     }
                 }
@@ -200,10 +298,6 @@ public class Queen extends Piece {
 
     //we dont need anything special...
     public void attackPiece(Board temp, int x, int y) {
-        if (!isattacklegal) {
-            System.out.println("this move is illegal cause you can't reach here");
-            return;
-        }
         if (temp.getChessboard()[x][y].getPiece().getPieceColor() == this.getPieceColor()) {
             System.out.println("this move is illegal you are attacking your own piece");
         } else {
@@ -215,216 +309,9 @@ public class Queen extends Piece {
             temp.getChessboard()[x][y].setPieceOn(true);
             setX(x);
             setY(y);
-            isattacklegal = false;
         }
 
 
     }
 
-    public void alltilesattacked(Board temp) {
-        //this is the bishop part i dont think we can send to bishop...
-        //checks if piece is white
-        if (this.getPieceColor() == PieceColor.WHITE) {
-
-            //checks if x is bigger and y is bigger
-            for (int i = 1; (getX() + i < 8) && (getY() + i < 8); i++) {
-                if (!temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
-                    temp.getChessboard()[getX() + i][getY() + i].attackedfromwhite = true;
-                } else {
-                    if (temp.getChessboard()[getX() + i][getY() + i].getPiece().getPieceColor() == PieceColor.BLACK) {
-                        temp.getChessboard()[getX() + i][getY() + i].attackedfromwhite = true;
-                    }
-                    break;
-                }
-            }
-
-            //out x is smaller then then location and y is smaller
-
-            for (int i = 1; (getX() - i >= 0) && (getY() - i >= 0); i++) {
-                if (!temp.getChessboard()[getX() - i][getY() - i].isPieceOn()) {
-                    temp.getChessboard()[getX() - i][getY() - i].attackedfromwhite = true;
-                } else {
-                    if (temp.getChessboard()[getX() - i][getY() - i].getPiece().getPieceColor() == PieceColor.BLACK) {
-                        temp.getChessboard()[getX() - i][getY() - i].attackedfromwhite = true;
-                    }
-                    break;
-                }
-            }
-            //when x is bigger and y is smaller
-            for (int i = 1; (i + getX() < 8) && (getY() - i > -1); i++) {
-                if (!temp.getChessboard()[getX() + i][getY() - i].isPieceOn()) {
-                    temp.getChessboard()[getX() + i][getY() - i].attackedfromwhite = true;
-                } else {
-                    if (temp.getChessboard()[getX() + i][getY() - i].getPiece().getPieceColor() == PieceColor.BLACK) {
-                        temp.getChessboard()[getX() + i][getY() - i].attackedfromwhite = true;
-                    }
-                    break;
-                }
-            }
-            //our x is smaller then the location and y is bigger
-            for (int i = 1; i < 8; i++) {
-                if (!temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
-                    temp.getChessboard()[getX() - i][getY() + i].attackedfromwhite = true;
-                } else {
-                    if (temp.getChessboard()[getX() - i][getY() + i].getPiece().getPieceColor() == PieceColor.BLACK) {
-                        temp.getChessboard()[getX() - i][getY() + i].attackedfromwhite = true;
-                    }
-                    break;
-                }
-            }
-
-
-        } else {
-            //checks if x is bigger and y is bigger
-            for (int i = 1; (getX() + i < 8) && (getY() + i < 8); i++) {
-                if (!temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
-                    temp.getChessboard()[getX() + i][getY() + i].attackedfromblack = true;
-                } else {
-                    if (temp.getChessboard()[getX() + i][getY() + i].getPiece().getPieceColor() == PieceColor.WHITE) {
-                        temp.getChessboard()[getX() + i][getY() + i].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-
-            //out x is smaller then then location and y is smaller
-
-            for (int i = 1; (getX() - i >= 0) && (getY() - i >= 0); i++) {
-                if (!temp.getChessboard()[getX() - i][getY() - i].isPieceOn()) {
-                    temp.getChessboard()[getX() - i][getY() - i].attackedfromblack = true;
-                } else {
-                    if (temp.getChessboard()[getX() - i][getY() - i].getPiece().getPieceColor() == PieceColor.WHITE) {
-                        temp.getChessboard()[getX() - i][getY() - i].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-            //when x is bigger and y is smaller
-            for (int i = 1; (i + getX() < 8) && (getY() - i > -1); i++) {
-                if (!temp.getChessboard()[getX() + i][getY() - i].isPieceOn()) {
-                    temp.getChessboard()[getX() + i][getY() - i].attackedfromblack = true;
-                    return;
-                } else {
-                    if (temp.getChessboard()[getX() + i][getY() - i].getPiece().getPieceColor() == PieceColor.WHITE) {
-                        temp.getChessboard()[getX() + i][getY() - i].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-            //our x is smaller then the location and y is bigger
-            for (int i = 1; i < 8; i++) {
-                if (!temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
-                    temp.getChessboard()[getX() - i][getY() + i].attackedfromblack = true;
-                } else {
-                    if (temp.getChessboard()[getX() - i][getY() + i].getPiece().getPieceColor() == PieceColor.WHITE) {
-                        temp.getChessboard()[getX() - i][getY() + i].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-        }
-        //now we check it in castle
-        //checks all the places on the same y axis going up for white
-        if (this.getPieceColor() == PieceColor.WHITE) {
-            int i = getX();
-            while ((!temp.getChessboard()[i][getY()].isPieceOn()) && (i < 8)) {
-                i = i + 1;
-                if (!temp.getChessboard()[i][getY()].isPieceOn()) {
-                    temp.getChessboard()[i][getY()].attackedfromwhite = true;
-                } else {
-                    if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.BLACK) {
-                        temp.getChessboard()[i][getY()].attackedfromwhite = true;
-                    }
-                    break;
-                }
-            }
-            //checks all the places on the y axis going down
-            while ((!temp.getChessboard()[i][getY()].isPieceOn()) && (i > -1)) {
-                i = i - 1;
-                if (!temp.getChessboard()[i][getY()].isPieceOn()) {
-                    temp.getChessboard()[i][getY()].attackedfromwhite = true;
-                } else {
-                    if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.BLACK) {
-                        temp.getChessboard()[i][getY()].attackedfromwhite = true;
-                    }
-                    break;
-                }
-            }
-            //checks all the places on the x axis going up
-            while ((!temp.getChessboard()[getX()][i].isPieceOn()) && (i < 8)) {
-                i = i + 1;
-                if (!temp.getChessboard()[getX()][i].isPieceOn()) {
-                    temp.getChessboard()[getX()][i].attackedfromwhite = true;
-                } else {
-                    if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.BLACK) {
-                        temp.getChessboard()[getX()][i].attackedfromwhite = true;
-                    }
-                    break;
-                }
-            }
-            //checks all the pieces on the x axis going down
-            while ((!temp.getChessboard()[getX()][i].isPieceOn()) && (i > -1)) {
-                i = i - 1;
-                if (!temp.getChessboard()[getX()][i].isPieceOn()) {
-                    temp.getChessboard()[getX()][i].attackedfromwhite = true;
-                } else {
-                    if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.BLACK) {
-                        temp.getChessboard()[getX()][i].attackedfromwhite = true;
-                    }
-                    break;
-                }
-            }
-        } else
-        //now if the piece is black
-        {
-            int i = getX();
-            while ((!temp.getChessboard()[i][getY()].isPieceOn()) && (i < 8)) {
-                i = i + 1;
-                if (!temp.getChessboard()[i][getY()].isPieceOn()) {
-                    temp.getChessboard()[i][getY()].attackedfromblack = true;
-                } else {
-                    if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.WHITE) {
-                        temp.getChessboard()[i][getY()].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-            //checks all the places on the y axis going down
-            while ((!temp.getChessboard()[i][getY()].isPieceOn()) && (i > -1)) {
-                i = i - 1;
-                if (!temp.getChessboard()[i][getY()].isPieceOn()) {
-                    temp.getChessboard()[i][getY()].attackedfromblack = true;
-                } else {
-                    if (temp.getChessboard()[i][getY()].getPiece().getPieceColor() == PieceColor.WHITE) {
-                        temp.getChessboard()[i][getY()].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-            //checks all the places on the x axis going up
-            while ((!temp.getChessboard()[getX()][i].isPieceOn()) && (i < 8)) {
-                i = i + 1;
-                if (!temp.getChessboard()[getX()][i].isPieceOn()) {
-                    temp.getChessboard()[getX()][i].attackedfromblack = true;
-                } else {
-                    if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.WHITE) {
-                        temp.getChessboard()[getX()][i].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-            //checks all the pieces on the x axis going down
-            while ((!temp.getChessboard()[getX()][i].isPieceOn()) && (i > -1)) {
-                i = i - 1;
-                if (!temp.getChessboard()[getX()][i].isPieceOn()) {
-                    temp.getChessboard()[getX()][i].attackedfromblack = true;
-                } else {
-                    if (temp.getChessboard()[getX()][i].getPiece().getPieceColor() == PieceColor.WHITE) {
-                        temp.getChessboard()[getX()][i].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-        }
-    }
 }
