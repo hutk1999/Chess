@@ -46,13 +46,11 @@ public class Bishop extends Piece {
         {
             //if xis smaller then target and y is also smaller
             if ((getX() < x) && (getY() < y)) {
-                int k = 1;
-                for (int i = getX() + 1; i < x - 1; i++) {
-                    if (temp.getChessboard()[getX() + k][getY() + k].isPieceOn()) {
+                for (int i =  1; i < x - getX(); i++) {
+                    if (temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
                         System.out.println("this move is illegal there is something in the way");
                         return;
                     }
-                    k++;
                 }
                 if (!temp.getChessboard()[x][y].isPieceOn()) {
                     temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
@@ -67,13 +65,11 @@ public class Bishop extends Piece {
             }
             //x is bigger and y is bigger than target
             else if ((getX() > x) && (getY() > y)) {
-                int k = 1;
-                for (int i = x; i < getX() - 1; i++) {
-                    if (temp.getChessboard()[getX() - k][getY() - k].isPieceOn()) {
+                for (int i = 1; i < getX() - x; i++) {
+                    if (temp.getChessboard()[getX() - i][getY() - i].isPieceOn()) {
                         System.out.println("this move is illegal");
                         return;
                     }
-                    k++;
                 }
                 if (!temp.getChessboard()[x][y].isPieceOn()) {
                     temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
@@ -89,8 +85,8 @@ public class Bishop extends Piece {
             //x is bigger and y is smaller
             else if ((getX() > x) && (getY() < y)) {
                 int k = 1;
-                for (int i = x + 1; i < getX() - 1; i++) {
-                    if (temp.getChessboard()[getX() - k][getY() + i].isPieceOn()) {
+                for (int i = 1; i < getX() - x; i++) {
+                    if (temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
                         System.out.println("this move is illegal");
                         return;
                     }
@@ -109,13 +105,12 @@ public class Bishop extends Piece {
             } else if ((getX() > x) && (getY() < y))
             //out x is bigger then the location
             {
-                for (int i = x + 1; i < getX() - 1; i++) {
-                    int k = 1;
-                    if (temp.getChessboard()[getX() - k][getY() + k].isPieceOn()) {
+                for (int i =  1; i < getX() - x; i++) {
+                    if (temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
                         System.out.println("this move is illegal");
                         return;
                     }
-                    k++;
+
                 }
                 if (!temp.getChessboard()[x][y].isPieceOn()) {
                     temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];

@@ -22,7 +22,11 @@ public class Main {
         myChess.getChessboard()[7][2].getPiece().movePiece(myChess, 5, 0);
         myChess.getChessboard()[0][1].getPiece().movePiece(myChess, 2, 2);
         myChess.getChessboard()[6][4].getPiece().movePiece(myChess, 4, 4);
-        myChess.getChessboard()[7][3].getPiece().movePiece(myChess, 4, 6);
+        myChess.getChessboard()[7][3].getPiece().movePiece(myChess, 3, 7);
+        myChess.getChessboard()[5][0].getPiece().movePiece(myChess, 2, 3);
+        myChess.getChessboard()[6][7].getPiece().movePiece(myChess, 4, 7);
+        myChess.getChessboard()[2][3].getPiece().movePiece(myChess, 6, 7);
+        myChess.getChessboard()[7][5].getPiece().movePiece(myChess, 2, 0);
         myChess.printBoard();
     }
 
