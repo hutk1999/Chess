@@ -32,7 +32,11 @@ public class Board {
         }
     }
 
-    public void printList()
+    public void printList(Piece[] temp){
+        for (int i = 0; i < temp.length; i++) {
+
+        }
+    }
 
     //prints the board out
     public void printBoard() {
