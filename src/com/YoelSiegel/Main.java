@@ -14,7 +14,11 @@ public class Main {
 
         Board myChess = new Board();
         myChess.makeBoard();
-        myChess.gettile(1,1).getPiece().movePiece(myChess,3,1);
+        myChess.gettile(6,1).getPiece().movePiece(myChess,5,1);
+        myChess.gettile(7,2).getPiece().movePiece(myChess,5,0);
+        myChess.gettile(5,0).getPiece().movePiece(myChess,1,4);
+
+        System.out.println();
         myChess.printBoard();
     }
 

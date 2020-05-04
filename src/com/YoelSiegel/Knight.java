@@ -81,7 +81,15 @@ public class Knight extends Piece {
         } else {
             if (temp.getChessboard()[x][y].getPiece().getPieceColor() == this.getPieceColor()) {
                 System.out.println("this is illegal because its your piece");
-            } else {
+            } else
+                {
+                    if(temp.gettile(x,y).getPiece().getPieceColor()==PieceColor.WHITE){
+                    temp.whiteList.remove(temp.gettile(x,y).getPiece());
+                }
+                else
+                {
+                    temp.blackList.remove(temp.gettile(x,y).getPiece());
+                }
                 temp.getChessboard()[x][y].setPiece(this);
                 temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                 temp.getChessboard()[x][y].setPieceOn(true);

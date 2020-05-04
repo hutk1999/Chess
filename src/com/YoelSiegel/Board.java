@@ -1,8 +1,13 @@
 package com.YoelSiegel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //class of board
 public class Board {
     Piece[] arrofKings=new Piece[2];
+    public List <Piece> blackList=new ArrayList<>();
+    public List <Piece> whiteList=new ArrayList<>();
 
     public Tiles[][] getChessboard() {
         return chessboard;
@@ -27,9 +32,9 @@ public class Board {
         }
     }
 
-    public void printList(Piece[] temp){
-        for (int i = 0; i < temp.length; i++) {
-
+    public void printList(List<Piece> temp){
+        for (int i = 0; i < temp.size(); i++) {
+            temp.get(i).printPiece();
         }
     }
 
@@ -117,8 +122,46 @@ public class Board {
         King wKtemp = new King(PieceColor.WHITE, 7, 4);
         getChessboard()[7][4].setPiece(wKtemp);
         arrofKings[1]=getChessboard()[7][4].getPiece();
+        whiteList.add(wKtemp);
+        whiteList.add(wqtemp);
+        whiteList.add(wbtemp0);
+        whiteList.add(wbtemp1);
+        whiteList.add(wctemp0);
+        whiteList.add(wctemp1);
+        whiteList.add(wktemp0);
+        whiteList.add(wktemp1);
+        whiteList.add(wptemp0);
+        whiteList.add(wptemp1);
+        whiteList.add(wptemp2);
+        whiteList.add(wptemp3);
+        whiteList.add(wptemp4);
+        whiteList.add(wptemp5);
+        whiteList.add(wptemp6);
+        whiteList.add(wptemp7);
+
+        blackList.add(bKtemp);
+        blackList.add(bqtemp);
+        blackList.add(bbtemp0);
+        blackList.add(bbtemp1);
+        blackList.add(bctemp0);
+        blackList.add(bctemp1);
+        blackList.add(bktemp0);
+        blackList.add(bktemp1);
+        blackList.add(bptemp0);
+        blackList.add(bptemp1);
+        blackList.add(bptemp2);
+        blackList.add(bptemp3);
+        blackList.add(bptemp4);
+        blackList.add(bptemp5);
+        blackList.add(bptemp6);
+        blackList.add(bptemp7);
+
 
     }
+    public Tiles gettile(int i, int j) {
+        return getChessboard()[i][j];
+    }
+
 
 
 }

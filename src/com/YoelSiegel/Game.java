@@ -1,7 +1,7 @@
 package com.YoelSiegel;
 
 import java.util.Scanner;
-
+/*
 public class Game {
     public boolean gameover=false;
     public void playgame() {
@@ -140,7 +140,7 @@ public class Game {
 
             }
     }
-
+*/
 
 
 

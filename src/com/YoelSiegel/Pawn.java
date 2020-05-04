@@ -106,6 +106,13 @@ public class Pawn extends Piece {
     public void attackPiece(Board temp, int x, int y) {
         if ((getY() + 1) == y) {
             if ((temp.getChessboard()[getX() + getZ()][getY() + 1].isPieceOn()) && (temp.getChessboard()[getX() + getZ()][getY() + 1].getPiece().getPieceColor() != getPieceColor())) {
+                if(temp.gettile(x,y).getPiece().getPieceColor()==PieceColor.WHITE){
+                    temp.whiteList.remove(temp.gettile(x,y).getPiece());
+                }
+                else
+                {
+                    temp.blackList.remove(temp.gettile(x,y).getPiece());
+                }
                 temp.getChessboard()[getX() + getZ()][getY() + 1].setPiece(this);
                 temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                 temp.getChessboard()[getX() + 1][getY() + getZ()].setPieceOn(true);
@@ -114,6 +121,13 @@ public class Pawn extends Piece {
             }
         } else if ((getY() - 1) == y) {
             if ((temp.getChessboard()[getX() + getZ()][getY() - 1].isPieceOn()) && (temp.getChessboard()[getX() + getZ()][getY() - 1].getPiece().getPieceColor() != getPieceColor())) {
+                if(temp.gettile(x,y).getPiece().getPieceColor()==PieceColor.WHITE){
+                    temp.whiteList.remove(temp.gettile(x,y).getPiece());
+                }
+                else
+                {
+                    temp.blackList.remove(temp.gettile(x,y).getPiece());
+                }
                 temp.getChessboard()[getX() + getZ()][getY() - 1].setPiece(this);
                 temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                 temp.getChessboard()[getX() + getZ()][getY() - 1].setPieceOn(true);

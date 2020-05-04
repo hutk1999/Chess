@@ -136,6 +136,13 @@ public class Bishop extends Piece {
                 System.out.println("this move is illegal because you are attacking own piece");
             }
             else{
+                if(temp.gettile(x,y).getPiece().getPieceColor()==PieceColor.WHITE){
+                    temp.whiteList.remove(temp.gettile(x,y).getPiece());
+                }
+                else
+                {
+                    temp.blackList.remove(temp.gettile(x,y).getPiece());
+                }
                 temp.getChessboard()[x][y].setPiece(this);
                 temp.getChessboard()[getX()][getY()]=new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
                 temp.getChessboard()[x][y].setPieceOn(true);
@@ -144,149 +151,8 @@ public class Bishop extends Piece {
                 isattacklegal=false;
             }
         }
-
-
-
     }
-// went over this its a good code
-    public void alltilesattacked(Board temp) {
-            //checks if piece is white
-            if (this.getPieceColor() == PieceColor.WHITE) {
-
-                //checks if x is bigger and y is bigger
-                        for (int i = 1; (getX()+i < 8)&&(getY()+i<8); i++) {
-                            if (!temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
-                                temp.getChessboard()[getX() + i][getY() + i].attackedfromwhite = true;
-                            }
-                            else
-                                {
-                               if(temp.getChessboard()[getX()+i][getY()+i].getPiece().getPieceColor()==PieceColor.BLACK)
-                               {
-                                    temp.getChessboard()[getX() + i][getY() + i].attackedfromwhite = true;
-                                }
-                               break;
-                            }
-                        }
-
-                    //out x is smaller then then location and y is smaller
-
-                        for (int i = 1; (getX()-i >=0)&&(getY()-i>=0); i++) {
-                            if (!temp.getChessboard()[getX() - i][getY() - i].isPieceOn())
-                            {
-                                temp.getChessboard()[getX() - i][getY() - i].attackedfromwhite = true;
-                            }
-                            else
-                                {
-                                if (temp.getChessboard()[getX() - i][getY() - i].getPiece().getPieceColor() == PieceColor.BLACK)
-                                {
-                                    temp.getChessboard()[getX() -i][getY() - i].attackedfromwhite = true;
-                                }
-                                break;
-                            }
-                        }
-                        //when x is bigger and y is smaller
-                        for (int i = 1; (i+getX() < 8)&&(getY()-i>-1); i++) {
-                        if (!temp.getChessboard()[getX() + i][getY() - i].isPieceOn())
-                        {
-                            temp.getChessboard()[getX() + i][getY() - i].attackedfromwhite = true;
-                        }
-                        else
-                            {
-                            if (temp.getChessboard()[getX() + i][getY() - i].getPiece().getPieceColor() == PieceColor.BLACK)
-                            {
-                                 temp.getChessboard()[getX() + i][getY() - i].attackedfromwhite = true;
-                                     }
-                            break;
-                        }
-                    }
-                //our x is smaller then the location and y is bigger
-                for (int i = 1; i < 8; i++) {
-                        if (!temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
-                            temp.getChessboard()[getX() - i][getY() + i].attackedfromwhite = true;
-                        }
-                        else
-                            {
-                            if (temp.getChessboard()[getX() - i][getY() + i].getPiece().getPieceColor() == PieceColor.BLACK)
-                            {
-                                temp.getChessboard()[getX() - i][getY() + i].attackedfromwhite = true;
-                            }
-                            break;
-                        }
-                    }
-
-
-                }
-        else  {
-            //checks if x is bigger and y is bigger
-            for (int i = 1; (getX()+i < 8)&&(getY()+i<8); i++) {
-                if (!temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
-                    temp.getChessboard()[getX() + i][getY() + i].attackedfromblack = true;
-                }
-                else
-                {
-                    if (temp.getChessboard()[getX() + i][getY() + i].getPiece().getPieceColor() == PieceColor.WHITE)
-                    {
-                        temp.getChessboard()[getX() + i][getY() + i].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-
-            //out x is smaller then then location and y is smaller
-
-            for (int i = 1; (getX()-i >=0)&&(getY()-i>=0); i++) {
-                if (!temp.getChessboard()[getX() - i][getY() - i].isPieceOn())
-                {
-                    temp.getChessboard()[getX() - i][getY() - i].attackedfromblack = true;
-                }
-                else
-                {
-                    if (temp.getChessboard()[getX() - i][getY() - i].getPiece().getPieceColor() == PieceColor.WHITE)
-                    {
-                        temp.getChessboard()[getX() -i][getY() - i].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-            //when x is bigger and y is smaller
-            for (int i = 1; (i+getX() < 8)&&(getY()-i>-1); i++) {
-                if (!temp.getChessboard()[getX() + i][getY() - i].isPieceOn())
-                {
-                    temp.getChessboard()[getX() + i][getY() - i].attackedfromblack = true;
-                    return;
-                }
-                else
-                {
-                    if (temp.getChessboard()[getX() + i][getY() - i].getPiece().getPieceColor() == PieceColor.WHITE)
-                    {
-                        temp.getChessboard()[getX() + i][getY() - i].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-            //our x is smaller then the location and y is bigger
-            for (int i = 1; i < 8; i++) {
-                if (!temp.getChessboard()[getX() - i][getY() + i].isPieceOn())
-                {
-                    temp.getChessboard()[getX() - i][getY() + i].attackedfromblack = true;
-                }
-                else
-                {
-                    if (temp.getChessboard()[getX() - i][getY() + i].getPiece().getPieceColor() == PieceColor.WHITE)
-                    {
-                        temp.getChessboard()[getX() - i][getY() + i].attackedfromblack = true;
-                    }
-                    break;
-                }
-            }
-
-
-        }
-
-            }
-
-
-        }
+}
 
 
 

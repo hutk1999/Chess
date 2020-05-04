@@ -52,6 +52,13 @@ public class King extends Piece {
             System.out.println("this move is illegal you are attacking your own piece");
         } else {
             System.out.print("in the attack of castle");
+            if(temp.gettile(x,y).getPiece().getPieceColor()==PieceColor.WHITE){
+                temp.whiteList.remove(temp.gettile(x,y).getPiece());
+            }
+            else
+            {
+                temp.blackList.remove(temp.gettile(x,y).getPiece());
+            }
 
             super.attackPiece(temp, x, y);
             temp.getChessboard()[x][y].setPiece(this);
