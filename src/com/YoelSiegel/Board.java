@@ -2,6 +2,7 @@ package com.YoelSiegel;
 
 //class of board
 public class Board {
+    Piece[] arrofKings=new Piece[2];
 
     public Tiles[][] getChessboard() {
         return chessboard;
@@ -106,8 +107,10 @@ public class Board {
         getChessboard()[7][3].setPiece(wqtemp);
         King bKtemp = new King(PieceColor.BLACK, 0, 4);
         getChessboard()[0][4].setPiece(bKtemp);
+        arrofKings[0]=getChessboard()[0][4].getPiece();
         King wKtemp = new King(PieceColor.WHITE, 7, 4);
         getChessboard()[7][4].setPiece(wKtemp);
+        arrofKings[1]=getChessboard()[7][4].getPiece();
 
     }
 
