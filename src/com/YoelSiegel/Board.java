@@ -27,6 +27,8 @@ public class Board {
         }
     }
 
+    public void printList()
+
     //prints the board out
     public void printBoard() {
 
