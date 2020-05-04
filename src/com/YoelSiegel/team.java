@@ -1,12 +1,14 @@
 package com.YoelSiegel;
-
+import java.util.*;
 public class team {
-    protected Piece[] allpieces=new Piece[16];
-    protected Pawn[] allpawns=new Pawn[8];
-    protected Bishop[] allbishops = new Bishop[2];
-    protected Castle[] allcastles =new Castle[2];
-    protected Queen[] allqueens= new Queen[1];
-    protected Knight[] allkinghts=new Knight[2];
+    public void initiategame(Board temp){
+        LinkedList<String>Piece=new LinkedList<>();
+
+
+    }
+    protected PieceColor thispiececolor;
+    protected Piece = new Piece[16];
+
     String name;
 
 }
